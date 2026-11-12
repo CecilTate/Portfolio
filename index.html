@@ -1,0 +1,2376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cecil Mashongedza Engineering Portfolio</title>
+<meta name="description" content="Engineering portfolio of Tatenda Cecil Mashongedza: concrete batch plants, mobile silos, trailer-mounted mixers, UAVs and product design, from CAD to field commissioning.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 32 32%22%3E%3Crect width=%2232%22 height=%2232%22 rx=%224%22 fill=%22%231B2226%22/%3E%3Crect x=%2218%22 y=%2222%22 width=%2214%22 height=%2210%22 fill=%22%23F2B705%22/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400..700;1,8..60,400&display=swap" rel="stylesheet">
+<style>
+@font-face { font-family: "Archivo Local"; src: url("fonts/archivo.woff2") format("woff2-variations"), url("fonts/archivo.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+@font-face { font-family: "Source Serif Local"; src: url("fonts/source-serif-4.woff2") format("woff2-variations"), url("fonts/source-serif-4.woff2") format("woff2"); font-weight: 200 900; font-style: normal; font-display: swap; }
+@font-face { font-family: "Source Serif Local"; src: url("fonts/source-serif-4-italic.woff2") format("woff2-variations"), url("fonts/source-serif-4-italic.woff2") format("woff2"); font-weight: 200 900; font-style: italic; font-display: swap; }
+
+/* Layout idea: the portfolio is a drawing set. The hero is a sheet whose title block is the engineer's ID; each project is a numbered sheet with its own title block (period, company, role, team, tools), narrative on the left, results on the right, figures below. */
+:root {
+  --paper: #ECEEEA;      /* light concrete page */
+  --sheet: #FFFFFF;      /* drawing sheet */
+  --plate: #FFFFFF;      /* figure plates stay white in both themes */
+  --ink: #1B2226;        /* graphite */
+  --ink-2: #4D575C;      /* secondary graphite */
+  --rule: #C3C9C4;       /* pencil rule */
+  --hivis: #F2B705;      /* hi-vis amber, the one accent */
+  --hivis-ink: #6B5000;  /* amber for small text on light */
+  --steel: #42525A;      /* chart bars */
+  --font-display: "Archivo Local", "Archivo", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+  --font-body: "Source Serif Local", "Source Serif 4", Georgia, "Times New Roman", serif;
+  --measure: 66ch;
+  --gutter: clamp(16px, 4vw, 48px);
+  color-scheme: light;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111517; --sheet: #192023; --plate: #F3F4F1; --ink: #E6E9E5; --ink-2: #A3ACB0;
+    --rule: #354045; --hivis: #F2B705; --hivis-ink: #F5C842; --steel: #9DB0B9; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111517; --sheet: #192023; --plate: #F3F4F1; --ink: #E6E9E5; --ink-2: #A3ACB0;
+  --rule: #354045; --hivis: #F2B705; --hivis-ink: #F5C842; --steel: #9DB0B9; color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 1.0625rem; line-height: 1.6;
+  font-optical-sizing: auto; text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: inherit; text-decoration-line: underline; text-decoration-color: var(--hivis); text-decoration-thickness: 3px; text-underline-offset: 3px; }
+a:hover { text-decoration-thickness: 5px; }
+:focus-visible { outline: 3px solid var(--hivis); outline-offset: 3px; border-radius: 2px; }
+h1, h2, h3, .display { font-family: var(--font-display); text-wrap: balance; margin: 0; }
+p { margin: 0; }
+.sr-only { position: absolute; left: 0; top: 0; display: block; width: 1px; max-width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap; border: 0; padding: 0; margin: -1px; }
+.wrap { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: var(--gutter); }
+.label { font-family: var(--font-display); font-stretch: 78%; font-weight: 600; font-size: .78rem; letter-spacing: .02em; color: var(--ink-2); line-height: 1.3; }
+.num { font-variant-numeric: tabular-nums lining-nums; }
+
+/* masthead */
+.masthead { border-bottom: 1px solid var(--rule); background: var(--paper); }
+.masthead .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; align-items: center; justify-content: space-between; padding-block: 14px; }
+.wordmark { font-family: var(--font-display); font-weight: 800; font-stretch: 115%; font-size: 1.05rem; text-decoration: none; letter-spacing: -.005em; }
+.masthead nav ul { list-style: none; display: flex; flex-wrap: wrap; gap: 4px 22px; margin: 0; padding: 0; font-family: var(--font-display); font-stretch: 90%; font-weight: 550; font-size: .95rem; }
+.masthead nav a { text-decoration-color: transparent; }
+.masthead nav a:hover { text-decoration-color: var(--hivis); }
+
+/* hero */
+.hero { padding-block: clamp(32px, 6vw, 72px) clamp(24px, 4vw, 48px); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 5.4fr) minmax(0, 6.6fr); gap: clamp(28px, 4vw, 56px); align-items: start; }
+.hero h1 { font-size: clamp(2.3rem, 4.3vw, 3.7rem); font-weight: 820; font-stretch: 104%; overflow-wrap: break-word; line-height: .98; letter-spacing: -.02em; }
+.hero .lead { font-size: 1.28rem; line-height: 1.5; margin-top: 26px; max-width: 34ch; }
+.hero .body { margin-top: 16px; max-width: 46ch; color: var(--ink-2); }
+.hero .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.btn { font-family: var(--font-display); font-stretch: 95%; font-weight: 650; font-size: .98rem; display: inline-flex; align-items: center; padding: 11px 18px; border: 2px solid var(--ink); border-radius: 3px; text-decoration: none; }
+.btn.primary { background: var(--ink); color: var(--paper); }
+.btn.primary:hover { background: var(--hivis); border-color: var(--hivis); color: #1B2226; }
+.btn:not(.primary):hover { background: var(--sheet); }
+
+/* the drawing sheet, used by the hero and every project */
+.sheet { background: var(--sheet); border: 1px solid var(--rule); box-shadow: inset 0 0 0 6px var(--sheet), inset 0 0 0 7px var(--rule); position: relative; }
+.hero-sheet { padding: 22px 22px 0; }
+.hero-sheet figure { margin: 0; background: var(--plate); padding: 8px 8px 0; }
+.titleblock { display: grid; border-top: 1.5px solid var(--ink); margin-top: 14px; }
+.titleblock > div { padding: 9px 12px 11px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); min-width: 0; }
+.titleblock dt { margin: 0 0 2px; }
+.titleblock dd { margin: 0; font-family: var(--font-display); font-stretch: 92%; font-weight: 560; font-size: .98rem; line-height: 1.32; }
+.hero-tb { grid-template-columns: 1.3fr 1fr 1fr; margin-inline: -22px; }
+.hero-tb .name { grid-row: span 2; border-left: 0; }
+.hero-tb .name dd { font-size: 1.3rem; font-weight: 780; font-stretch: 108%; line-height: 1.12; }
+.hero-tb > div:nth-child(3n) { border-right: 0; }
+.hero-tb .sheetno { background: var(--hivis); }
+.hero-tb .sheetno dt, .hero-tb .sheetno dd { color: #1B2226; }
+.hero-cap { font-size: .9rem; color: var(--ink-2); padding: 10px 0 14px; font-style: italic; }
+
+.keydata { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-top: clamp(32px, 5vw, 56px); }
+.keydata > div { padding: 18px 18px 20px 0; }
+.keydata > div + div { padding-left: 18px; border-left: 1px solid var(--rule); }
+.keydata b { display: block; font-family: var(--font-display); font-weight: 800; font-stretch: 110%; font-size: clamp(1.9rem, 3.4vw, 2.6rem); line-height: 1; letter-spacing: -.015em; }
+.keydata span { display: block; margin-top: 8px; font-size: .95rem; line-height: 1.4; color: var(--ink-2); max-width: 30ch; }
+
+/* section headings */
+.section { padding-block: clamp(40px, 6vw, 80px) 0; }
+.section-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 24px; margin-bottom: 22px; }
+.section-head h2 { font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 780; font-stretch: 108%; letter-spacing: -.012em; }
+.section-head p { color: var(--ink-2); max-width: 52ch; }
+
+/* drawing list */
+.drawlist { width: 100%; border-collapse: collapse; background: var(--sheet); border: 1px solid var(--rule); }
+.drawlist th { text-align: left; padding: 10px 14px; border-bottom: 1.5px solid var(--ink); }
+.drawlist td { padding: 13px 14px; border-bottom: 1px solid var(--rule); vertical-align: baseline; }
+.drawlist tr:last-child td { border-bottom: 0; }
+.drawlist td:first-child { width: 4.5rem; font-family: var(--font-display); font-weight: 700; font-stretch: 100%; }
+.drawlist td.proj a { font-family: var(--font-display); font-weight: 650; font-stretch: 96%; font-size: 1.06rem; text-decoration-color: transparent; }
+.drawlist tr:hover td.proj a, .drawlist td.proj a:focus-visible { text-decoration-color: var(--hivis); }
+.drawlist td.ctx { color: var(--ink-2); }
+.drawlist td.yr { white-space: nowrap; text-align: right; width: 1%; }
+
+/* project sheets */
+.project { margin-top: clamp(28px, 4vw, 44px); padding: clamp(22px, 3.4vw, 44px); }
+.sheet-tab { position: absolute; top: -1px; right: clamp(22px, 3.4vw, 44px); background: var(--hivis); color: #1B2226; padding: 6px 12px 7px; font-family: var(--font-display); font-weight: 700; font-stretch: 90%; font-size: .82rem; }
+.project h2 { font-size: clamp(1.7rem, 3.3vw, 2.65rem); font-weight: 800; font-stretch: 106%; line-height: 1.04; letter-spacing: -.016em; max-width: 30ch; padding-right: 7rem; }
+.project .summary { margin-top: 16px; font-size: 1.2rem; line-height: 1.5; max-width: 60ch; }
+.proj-tb { grid-template-columns: .9fr 1.2fr 1.5fr 1fr 1.5fr; margin-top: 26px; border-left: 1px solid var(--rule); }
+.proj-tb > div:last-child { border-right: 1px solid var(--rule); }
+.hero-fig { margin: 26px 0 0; }
+.plate { background: var(--plate); border: 1px solid var(--rule); padding: clamp(8px, 1.4vw, 16px); }
+.plate img { margin-inline: auto; }
+figcaption { font-size: .9rem; line-height: 1.45; color: var(--ink-2); margin-top: 8px; }
+figcaption b { font-family: var(--font-display); font-weight: 650; font-stretch: 90%; color: var(--ink); margin-right: 4px; }
+
+.proj-body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 56px); margin-top: 32px; }
+.proj-body h3 { font-size: 1.12rem; font-weight: 700; font-stretch: 100%; margin: 26px 0 8px; }
+.proj-body h3:first-child { margin-top: 0; }
+.proj-body p, .proj-body li { max-width: var(--measure); }
+.proj-body ul, .proj-body ol { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; }
+.proj-body ol { padding-left: 1.5em; }
+.proj-body li::marker { color: var(--ink-2); font-family: var(--font-display); font-weight: 650; }
+.results { border-top: 1.5px solid var(--ink); }
+.results h3 { margin: 12px 0 4px !important; }
+.results dl { margin: 0; }
+.results .r { padding: 14px 0; border-bottom: 1px solid var(--rule); display: grid; grid-template-columns: 7.4rem minmax(0, 1fr); gap: 14px; align-items: baseline; }
+.results dt { font-family: var(--font-display); font-weight: 800; font-stretch: 104%; font-size: 1.5rem; line-height: 1; letter-spacing: -.01em; }
+.results dd { margin: 0; font-size: .98rem; line-height: 1.45; }
+.results .note { font-size: .88rem; color: var(--ink-2); padding-top: 12px; font-style: italic; }
+
+.figs { display: grid; gap: clamp(14px, 2vw, 22px); margin-top: 32px; }
+.figs.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.figs.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.figs.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.figs figure { margin: 0; display: flex; flex-direction: column; }
+.figs .plate { flex: 1; display: flex; align-items: center; justify-content: center; }
+.figs .plate.photo { padding: 0; }
+.figs .plate.photo img { width: 100%; height: auto; }
+.hero-fig .plate:not(.photo):not(.chart) img { max-height: 640px; width: auto; }
+.figs .plate.photo.fit { aspect-ratio: var(--ar, 4 / 3); overflow: hidden; flex: 1; min-height: 0; }
+.figs .plate.photo.fit img { width: 100%; height: 100%; object-fit: cover; object-position: var(--pos, 50% 50%); }
+.subwork { margin-top: 36px; border-top: 1.5px solid var(--ink); padding-top: 14px; }
+.subwork h3 { font-size: 1.2rem; font-weight: 740; font-stretch: 102%; }
+.subwork .figs { margin-top: 16px; }
+.chart-fig { margin: 36px 0 0; }
+.chart .grp text { fill: var(--ink); font-family: var(--font-display); font-weight: 700; font-stretch: 95%; font-size: 13px; }
+.chart .limit { stroke: var(--ink); stroke-width: 1.2; stroke-dasharray: 4 3; }
+.chart .limit-l { fill: var(--ink-2); font-family: var(--font-display); font-stretch: 90%; font-size: 11.5px; }
+.chart .val text, .chart text.val { paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
+
+/* chart */
+.chart { background: var(--sheet); }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart .grid line { stroke: var(--rule); stroke-width: 1; }
+.chart .axis text, .chart .xl text { fill: var(--ink-2); font-family: var(--font-display); font-stretch: 90%; font-size: 12px; }
+.chart .xl .p { fill: var(--ink); font-weight: 650; font-size: 13px; }
+.chart .val, .chart .val text { fill: var(--ink); font-family: var(--font-display); font-weight: 750; font-size: 15px; }
+.chart .bar { fill: var(--steel); }
+.chart .bar.hi { fill: var(--hivis); }
+.chart .bar:hover { opacity: .85; }
+.chart .base { stroke: var(--ink); stroke-width: 1.5; }
+
+/* more work */
+.more { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0; border-top: 1.5px solid var(--ink); }
+.more article { padding: 20px 24px 22px 0; border-bottom: 1px solid var(--rule); }
+.more article:nth-child(2n) { padding-left: 24px; padding-right: 0; border-left: 1px solid var(--rule); }
+.more h3 { font-size: 1.15rem; font-weight: 720; font-stretch: 100%; }
+.more .where { margin-top: 3px; }
+.more p { margin-top: 10px; font-size: 1rem; max-width: 58ch; }
+
+/* experience */
+.timeline { border-top: 1.5px solid var(--ink); }
+.job { display: grid; grid-template-columns: 11rem minmax(0, 1fr); gap: 8px 32px; padding: 22px 0; border-bottom: 1px solid var(--rule); }
+.job .when { font-family: var(--font-display); font-stretch: 92%; font-weight: 600; color: var(--ink-2); padding-top: 3px; }
+.job h3 { font-size: 1.2rem; font-weight: 740; font-stretch: 102%; }
+.job .org { color: var(--ink-2); margin-top: 2px; }
+.job ul { margin: 12px 0 0; padding-left: 1.15em; display: grid; gap: 6px; max-width: var(--measure); }
+
+/* skills + credentials */
+.cols2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(28px, 4vw, 56px); }
+.skills { border-top: 1.5px solid var(--ink); }
+.skill { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.skill h3 { font-size: 1.05rem; font-weight: 700; font-stretch: 100%; }
+.skill p { margin-top: 6px; font-size: 1rem; }
+.skill .used { margin-top: 6px; font-size: .9rem; color: var(--ink-2); }
+.creds { border-top: 1.5px solid var(--ink); }
+.cred { padding: 16px 0; border-bottom: 1px solid var(--rule); }
+.cred h3 { font-size: 1.05rem; font-weight: 700; font-stretch: 100%; }
+.cred p { margin-top: 4px; font-size: 1rem; color: var(--ink-2); }
+
+/* contact */
+.contact { margin-top: clamp(48px, 7vw, 96px); background: var(--ink); color: var(--paper); }
+.contact .wrap { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 24px 48px; padding-block: clamp(36px, 5vw, 64px); align-items: center; }
+.contact h2 { font-size: clamp(1.9rem, 3.6vw, 3rem); font-weight: 820; font-stretch: 112%; line-height: 1; letter-spacing: -.02em; }
+.contact p { margin-top: 12px; opacity: .85; max-width: 44ch; }
+.contact dl { margin: 0; display: grid; gap: 0; }
+.contact dl > div { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr); gap: 12px; padding: 11px 0; border-bottom: 1px solid color-mix(in srgb, var(--paper) 22%, transparent); }
+.contact dt { font-family: var(--font-display); font-stretch: 85%; font-weight: 600; font-size: .85rem; opacity: .75; padding-top: 3px; }
+.contact dd { margin: 0; font-family: var(--font-display); font-weight: 600; font-stretch: 96%; font-size: 1.05rem; overflow-wrap: anywhere; }
+.contact img { width: 72px; height: 84px; object-fit: cover; border-radius: 2px; }
+.contact .who { display: flex; gap: 18px; align-items: center; margin-bottom: 18px; }
+footer { background: var(--ink); color: var(--paper); }
+footer .wrap { padding-block: 0 28px; font-size: .85rem; opacity: .7; }
+
+/* responsive */
+@media (max-width: 980px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .proj-tb { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .proj-tb > div:nth-child(2n) { border-right: 1px solid var(--rule); }
+  .proj-body { grid-template-columns: 1fr; }
+  .figs.c4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .keydata { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .keydata > div:nth-child(3) { padding-left: 0; border-left: 0; }
+  .keydata > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .cols2 { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  body { font-size: 1rem; }
+  .hero-tb { grid-template-columns: 1fr 1fr; }
+  .hero-tb .name { grid-column: span 2; grid-row: auto; }
+  .hero-tb > div { border-right: 1px solid var(--rule) !important; }
+  .hero-tb > div:nth-child(2n+1):not(.name) { border-right: 1px solid var(--rule); }
+  .figs.c2, .figs.c3, .figs.c4 { grid-template-columns: 1fr; }
+  .more { grid-template-columns: 1fr; }
+  .more article:nth-child(2n) { padding-left: 0; border-left: 0; }
+  .job { grid-template-columns: 1fr; }
+  .contact .wrap { grid-template-columns: 1fr; }
+  .drawlist td.ctx { display: none; }
+  .project h2 { padding-right: 0; padding-top: 22px; }
+  .results .r { grid-template-columns: 5.4rem minmax(0, 1fr); }
+}
+@media (max-width: 420px) {
+  .proj-tb { grid-template-columns: 1fr; }
+  .keydata { grid-template-columns: 1fr; }
+  .keydata > div { padding-left: 0 !important; border-left: 0 !important; }
+  .keydata > div + div { border-top: 1px solid var(--rule); }
+}
+
+
+/* ---------- interactive layer ---------- */
+:root { --bad: #B42318; --hdr: 58px; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bad: #F97066; } }
+:root[data-theme="dark"] { --bad: #F97066; }
+
+section[id], article[id] { scroll-margin-top: calc(var(--hdr) + 12px); }
+.masthead { position: sticky; top: 0; z-index: 50; background: color-mix(in srgb, var(--paper) 90%, transparent); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.masthead .wrap { padding-block: 12px; }
+.progress { position: absolute; left: 0; right: 0; bottom: -1px; height: 3px; background: var(--hivis); transform-origin: 0 50%; transform: scaleX(var(--p, 0)); }
+.now { flex: 1; min-width: 0; font-family: var(--font-display); font-stretch: 88%; font-weight: 600; font-size: .86rem; color: var(--ink-2); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.masthead nav a[aria-current="true"] { text-decoration-color: var(--hivis); }
+@media (max-width: 900px) { .now { display: none; } :root { --hdr: 92px; } }
+
+/* segmented controls */
+.seg { display: inline-flex; flex-wrap: wrap; border: 1.5px solid var(--ink); border-radius: 3px; overflow: hidden; background: var(--sheet); }
+.seg button { font-family: var(--font-display); font-stretch: 92%; font-weight: 620; font-size: .9rem; line-height: 1.15; padding: 9px 14px; background: transparent; color: var(--ink); border: 0; border-left: 1.5px solid var(--ink); cursor: pointer; text-align: left; }
+.seg button:first-child { border-left: 0; }
+.seg button small { display: block; font-weight: 500; font-size: .76rem; color: var(--ink-2); margin-top: 2px; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.seg button[aria-pressed="true"] small { color: inherit; opacity: .8; }
+.seg button:hover:not([aria-pressed="true"]) { background: color-mix(in srgb, var(--ink) 8%, transparent); }
+.seg button .n { font-variant-numeric: tabular-nums; opacity: .7; margin-left: 4px; }
+.ctl-label { margin: 0 0 6px; }
+
+/* interactive chart */
+.chart-ctl { display: flex; flex-wrap: wrap; align-items: end; justify-content: space-between; gap: 12px 20px; margin-bottom: 12px; }
+.chart-ctl p { max-width: 46ch; font-size: .95rem; color: var(--ink-2); }
+.plate.chart { position: relative; }
+.chart .bar { transform-box: fill-box; transform-origin: 0 50%; transition: transform .55s cubic-bezier(.2,.7,.2,1); cursor: default; }
+.chart .bar:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
+.chart .nr { fill: var(--ink-2); font-family: var(--font-body); font-style: italic; font-size: 12.5px; paint-order: stroke; stroke: var(--sheet); stroke-width: 6px; stroke-linejoin: round; }
+.chart .limit-l { paint-order: stroke; stroke: var(--sheet); stroke-width: 5px; stroke-linejoin: round; }
+.tip { position: absolute; z-index: 5; pointer-events: none; background: var(--ink); color: var(--paper); font-family: var(--font-display); font-stretch: 92%; font-weight: 600; font-size: .84rem; line-height: 1.3; padding: 7px 9px; border-radius: 3px; transform: translate(-50%, calc(-100% - 10px)); white-space: nowrap; opacity: 0; transition: opacity .12s; }
+.tip.on { opacity: 1; }
+
+/* commissioning timeline */
+.tl-intro { margin-top: 8px; max-width: var(--measure); color: var(--ink-2); }
+.tl-legend { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 14px 0 0; padding: 0; list-style: none; font-family: var(--font-display); font-stretch: 90%; font-size: .84rem; color: var(--ink-2); }
+.tl-legend li { display: inline-flex; align-items: center; gap: 7px; }
+.dot { width: 13px; height: 13px; border-radius: 50%; border: 2px solid var(--ink); background: var(--sheet); flex: none; box-sizing: border-box; }
+.dot.fail, [data-phase="fail"] .dot { border-color: var(--bad); background: var(--bad); }
+.dot.fix, [data-phase="fix"] .dot { background: var(--ink); }
+.dot.prod, [data-phase="prod"] .dot { background: var(--hivis); border-color: var(--hivis); }
+.tl-scroll { overflow-x: auto; margin-top: 16px; padding: 6px 2px 10px; scrollbar-width: thin; }
+.tl-list { list-style: none; margin: 0; padding: 0; display: flex; position: relative; min-width: max-content; }
+@media screen and (min-width: 1100px) { .tl-list { min-width: 100%; } .tl-list > li { flex: 1 1 0; min-width: 0; } .tl-hit { width: 100%; padding-right: 6px; } }
+.tl-list::before { content: ""; position: absolute; left: 6px; right: 6px; top: 6px; height: 2px; background: var(--rule); }
+.tl-list > li { position: relative; }
+.tl-hit { display: flex; flex-direction: column; align-items: flex-start; gap: 7px; background: none; border: 0; padding: 0 16px 4px 0; cursor: pointer; text-align: left; color: var(--ink-2); width: 92px; }
+.tl-hit .dot { transition: transform .15s; }
+.tl-hit:hover .dot { transform: scale(1.25); }
+.tl-hit[aria-selected="true"] { color: var(--ink); }
+.tl-hit[aria-selected="true"] .dot { transform: scale(1.45); box-shadow: 0 0 0 3px var(--sheet), 0 0 0 4.5px var(--ink); }
+.tl-date { font-family: var(--font-display); font-stretch: 88%; font-weight: 700; font-size: .8rem; line-height: 1.2; }
+.tl-title { font-family: var(--font-display); font-stretch: 86%; font-weight: 500; font-size: .74rem; line-height: 1.25; }
+@media screen { .tl-title { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; } .tl-hit { width: 76px; } }
+.tl-body, .tl-li-imgs { display: none; }
+.tl-stage { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(18px, 3vw, 32px); margin-top: 10px; align-items: start; min-height: 320px; }
+.tl-media { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 10px; }
+.tl-media figure { margin: 0; }
+.tl-media img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border: 1px solid var(--rule); background: var(--plate); display: block; }
+.tl-media.two img { aspect-ratio: 3 / 4; }
+.tl-media figcaption { margin-top: 5px; }
+.tl-text { border-top: 1.5px solid var(--ink); padding-top: 12px; }
+.tl-text .when { font-family: var(--font-display); font-weight: 800; font-stretch: 104%; font-size: 1.7rem; line-height: 1.05; letter-spacing: -.01em; }
+.tl-tag { display: inline-flex; align-items: center; gap: 7px; margin-top: 10px; font-family: var(--font-display); font-stretch: 90%; font-weight: 650; font-size: .82rem; color: var(--ink-2); }
+.tl-text h4 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 720; font-stretch: 100%; margin: 12px 0 6px; text-wrap: balance; }
+.tl-text p { max-width: 52ch; }
+.tl-nav { display: flex; align-items: center; gap: 10px; margin-top: 16px; }
+.tl-nav button { font-family: var(--font-display); font-weight: 650; font-stretch: 92%; font-size: .9rem; padding: 8px 14px; border: 1.5px solid var(--ink); background: var(--sheet); color: var(--ink); border-radius: 3px; cursor: pointer; }
+.tl-nav button:hover:not(:disabled) { background: var(--ink); color: var(--paper); }
+.tl-nav button:disabled { opacity: .35; cursor: default; }
+.tl-count { font-family: var(--font-display); font-stretch: 90%; font-size: .85rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.fade { animation: fadein .35s ease both; }
+@keyframes fadein { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+/* modular configurator */
+.cfg { display: grid; grid-template-columns: minmax(0, 8fr) minmax(0, 4fr); gap: clamp(18px, 3vw, 32px); margin-top: 26px; align-items: start; }
+.cfg-view { position: relative; padding: 0; overflow: hidden; background: #D9D9D9; }
+.cfg-view img { width: 100%; height: auto; display: block; transition: opacity .25s; }
+.cfg-view img.loading { opacity: .25; }
+.cfg-side { display: grid; gap: 16px; }
+.cfg-side h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 740; }
+.cfg-schem { width: 100%; height: auto; display: block; border: 1px solid var(--rule); background: var(--sheet); }
+.cfg-schem .bin { fill: color-mix(in srgb, var(--ink) 10%, var(--sheet)); stroke: var(--ink); stroke-width: 1.5; }
+.cfg-schem g.new { animation: binin .45s cubic-bezier(.2,.7,.2,1) both; }
+.cfg-schem .cem { fill: var(--sheet); stroke: var(--ink); stroke-width: 1.5; }
+.cfg-schem .leg { stroke: #B42318; stroke-width: 3; }
+.cfg-schem .belt { stroke: var(--ink); stroke-width: 3; stroke-linecap: round; }
+.cfg-schem .gnd { stroke: var(--rule); stroke-width: 1.5; }
+.cfg-schem text { font-family: var(--font-display); font-stretch: 88%; font-size: 11px; fill: var(--ink-2); }
+@keyframes binin { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: none; } }
+.cfg-desc { font-size: .98rem; }
+
+/* equipment gallery */
+.gal-ctl { margin-bottom: 18px; }
+.gal { columns: 3 260px; column-gap: 16px; }
+.gal figure { break-inside: avoid; margin: 0 0 16px; display: block; }
+.gal figure[hidden] { display: none; }
+.gal .plate { padding: 0; }
+.gal img { width: 100%; height: auto; display: block; }
+.gal figcaption .tag { display: inline-block; font-family: var(--font-display); font-stretch: 88%; font-weight: 650; font-size: .76rem; color: var(--ink-2); margin-right: 6px; }
+
+/* zoomable images */
+img[data-zoom] { cursor: zoom-in; }
+img[data-zoom]:focus-visible { outline: 3px solid var(--hivis); outline-offset: 2px; }
+
+/* lightbox */
+.lb { position: fixed; inset: 0; z-index: 200; background: rgba(14, 17, 19, .97); color: #E6E9E5; display: grid; grid-template-rows: auto minmax(0, 1fr) auto; }
+.lb[hidden] { display: none; }
+.lb-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px 16px; font-family: var(--font-display); font-stretch: 90%; font-size: .9rem; }
+.lb-stage { position: relative; display: flex; align-items: center; justify-content: center; padding: 0 clamp(12px, 6vw, 72px); min-height: 0; }
+.lb-stage img { max-width: 100%; max-height: 100%; object-fit: contain; background: #fff; box-shadow: 0 10px 40px rgba(0,0,0,.4); }
+.lb-cap { padding: 12px 16px 20px; max-width: 80ch; margin-inline: auto; text-align: center; font-size: .98rem; line-height: 1.45; }
+.lb button { font-family: var(--font-display); font-weight: 650; font-stretch: 92%; background: rgba(255,255,255,.08); color: #fff; border: 1.5px solid rgba(255,255,255,.35); border-radius: 3px; padding: 8px 14px; cursor: pointer; font-size: .9rem; }
+.lb button:hover { background: rgba(255,255,255,.18); }
+.lb .lb-prev, .lb .lb-next { position: absolute; top: 50%; transform: translateY(-50%); width: 44px; height: 64px; padding: 0; font-size: 1.4rem; }
+.lb .lb-prev { left: 10px; } .lb .lb-next { right: 10px; }
+.lb button:focus-visible { outline: 3px solid var(--hivis); outline-offset: 2px; }
+
+.used a { white-space: nowrap; }
+
+@media (max-width: 980px) {
+  .cfg { grid-template-columns: 1fr; }
+  .tl-stage { grid-template-columns: 1fr; min-height: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .chart .bar, .tl-hit .dot, .cfg-view img { transition: none; }
+  .fade, .cfg-schem g.new { animation: none; }
+}
+@media screen { .print-only { display: none !important; } }
+
+.chart text.grp { fill: var(--ink); font-family: var(--font-display); font-weight: 700; font-stretch: 95%; font-size: 13px; }
+.chart text.xl { fill: var(--ink-2); font-family: var(--font-display); font-stretch: 90%; font-size: 12px; }
+.chart text.xl, .chart text.grp { paint-order: stroke; stroke: var(--sheet); stroke-width: 4px; stroke-linejoin: round; }
+
+/* project brief: what / how / why, key numbers, and the expandable full story */
+.brief { margin-top: 30px; border-top: 1.5px solid var(--ink); }
+.whw { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); }
+.whw > div { padding: 16px 22px 20px; border-left: 1px solid var(--rule); min-width: 0; }
+.whw > div:first-child { padding-left: 0; border-left: 0; }
+.whw > .w-why { background: color-mix(in srgb, var(--hivis) 9%, var(--sheet)); padding-right: 20px; padding-left: 20px; }
+.whw h3 { font-family: var(--font-display); font-weight: 800; font-stretch: 100%; font-size: .96rem; letter-spacing: .02em; text-transform: uppercase; margin: 0 0 10px; display: flex; align-items: center; gap: 9px; }
+.whw h3::before { content: ""; width: 16px; height: 4px; background: var(--hivis); flex: none; }
+.whw p, .whw li { margin: 0; font-size: 1.02rem; line-height: 1.5; }
+.whw ul { margin: 0; padding-left: 1.05em; display: grid; gap: 7px; }
+.whw li::marker { color: var(--ink-2); }
+.whw b, .more-body b { font-family: var(--font-display); font-weight: 700; font-stretch: 96%; }
+.w-why p { font-size: 1.06rem; }
+.kpis { margin: 0; display: grid; grid-template-columns: repeat(var(--k, 4), minmax(0, 1fr)); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+.kpis:has(> div:nth-child(3):last-child) { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); }
+.kpis:has(> div:nth-child(5)) { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+.kpis:has(> div:nth-child(6)) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.kpis:has(> div:nth-child(6)) > div:nth-child(3n+1) { border-left: 0; padding-left: 0; }
+.kpis:has(> div:nth-child(6)) > div:nth-child(n+4) { border-top: 1px solid var(--rule); }
+.kpis > div { padding: 14px 18px 16px; border-left: 1px solid var(--rule); min-width: 0; }
+.kpis > div:first-child { border-left: 0; padding-left: 0; }
+.kpis dt { font-family: var(--font-display); font-weight: 800; font-stretch: 104%; font-size: 1.75rem; line-height: 1.05; letter-spacing: -.01em; }
+.kpis dd { margin: 6px 0 0; font-size: .92rem; line-height: 1.35; color: var(--ink-2); }
+.brief > .note { font-size: .86rem; color: var(--ink-2); font-style: italic; margin: 10px 0 0; }
+.brief > .note a { color: inherit; }
+.more-proj { margin-top: 16px; }
+.more-proj > summary { list-style: none; display: inline-flex; align-items: center; gap: 12px; font-family: var(--font-display); font-weight: 680; font-stretch: 95%; font-size: .98rem; padding: 10px 16px; border: 1.5px solid var(--ink); border-radius: 3px; cursor: pointer; background: var(--sheet); color: var(--ink); user-select: none; }
+.more-proj > summary::-webkit-details-marker { display: none; }
+.more-proj > summary::after { content: ""; width: 8px; height: 8px; border-right: 2px solid currentColor; border-bottom: 2px solid currentColor; transform: translateY(-2px) rotate(45deg); transition: transform .2s ease; }
+.more-proj[open] > summary::after { transform: translateY(2px) rotate(-135deg); }
+.more-proj > summary:hover { background: var(--ink); color: var(--sheet); }
+.more-proj > summary:focus-visible { outline: 3px solid var(--hivis); outline-offset: 2px; }
+.more-proj .less, .more-proj[open] .mo { display: none; }
+.more-proj[open] .less { display: inline; }
+.more-body { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(24px, 4vw, 56px); padding: 22px 0 4px; }
+.more-proj[open] .more-body { animation: more-in .28s ease both; }
+@keyframes more-in { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: none; } }
+.more-body h4 { font-family: var(--font-display); font-size: 1.08rem; font-weight: 700; font-stretch: 100%; margin: 0 0 8px; }
+.more-body p, .more-body li { max-width: var(--measure); }
+.more-body > div > p { margin: 0 0 20px; }
+.more-body ul, .more-body ol { margin: 0 0 20px; padding-left: 1.2em; display: grid; gap: 9px; }
+.more-body li::marker { color: var(--ink-2); font-family: var(--font-display); font-weight: 650; }
+.more-body .note { font-size: .88rem; color: var(--ink-2); font-style: italic; border-top: 1px solid var(--rule); padding-top: 10px; }
+@media screen and (max-width: 980px) {
+  .whw { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .whw > .w-what { grid-column: 1 / -1; padding-right: 0; border-bottom: 1px solid var(--rule); }
+  .whw > .w-how { padding-left: 0; border-left: 0; }
+  .kpis, .kpis:has(> div:nth-child(3):last-child) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .kpis > div:nth-child(odd) { border-left: 0; padding-left: 0; }
+  .kpis > div:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  .kpis:has(> div:nth-child(3):last-child) > div:nth-child(3), .kpis > div:nth-child(5):last-child { grid-column: 1 / -1; border-left: 0; padding-left: 0; }
+  .kpis:has(> div:nth-child(5)) { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+  .kpis:has(> div:nth-child(6)) > div:nth-child(even) { border-left: 1px solid var(--rule); padding-left: 18px; }
+  .more-body { grid-template-columns: 1fr; gap: 0; }
+}
+@media screen and (max-width: 680px) {
+  .whw { grid-template-columns: 1fr; }
+  .whw > div { padding: 14px 0 16px; border-left: 0; border-top: 1px solid var(--rule); }
+  .whw > div:first-child { border-top: 0; border-bottom: 0; }
+  .whw > .w-why { padding: 14px 16px 16px; }
+  .kpis dt { font-size: 1.5rem; }
+  .more-proj > summary { width: 100%; justify-content: space-between; }
+}
+@media (prefers-reduced-motion: reduce) { .more-proj[open] .more-body { animation: none; } .more-proj > summary::after { transition: none; } }
+
+/* hero: intro on top, then the product-development sheet (drawing -> build -> finished product) */
+.hero-top { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 clamp(24px, 4vw, 64px); align-items: start; }
+.hero-top h1 { grid-column: 1 / -1; max-width: 22ch; margin-bottom: clamp(18px, 2.4vw, 28px); }
+.hero-top .body { margin-top: 4px; }
+.hero-top .lead { margin-top: 0; }
+.dev { margin-top: clamp(26px, 3vw, 36px); padding: 18px 22px 0; }
+.dev figure { margin: 0; padding: 0; background: none; }
+.dev-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 24px; margin-bottom: 16px; }
+.dev-label { font-size: .86rem; margin: 0; }
+.dev-flow { --dev-h: clamp(180px, 18.5vw, 270px); --gap: clamp(40px, 4.4vw, 60px); list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1.45fr); column-gap: var(--gap); }
+.dev-step { position: relative; min-width: 0; }
+.dev-img { height: var(--dev-h); background: var(--plate); border: 1px solid var(--rule); overflow: hidden; }
+.dev-img img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; }
+.dev-img.draw img { object-fit: contain; padding: 10px; }
+.dev-img.final { border: 2px solid var(--ink); }
+.dev-step figcaption { margin-top: 10px; display: grid; grid-template-columns: auto minmax(0, 1fr); column-gap: 10px; row-gap: 2px; align-items: baseline; }
+.dev-n { grid-row: span 2; font-family: var(--font-display); font-weight: 800; font-stretch: 100%; font-size: .78rem; line-height: 1; padding: 4px 6px; border: 1.5px solid var(--ink); border-radius: 2px; align-self: start; margin-top: 1px; }
+.dev-step:last-child .dev-n { background: var(--hivis); border-color: var(--hivis); color: #1B2226; }
+.dev-stage { font-family: var(--font-display); font-weight: 760; font-stretch: 100%; font-size: 1.04rem; line-height: 1.2; }
+.dev-cap { grid-column: 2; font-size: .9rem; color: var(--ink-2); line-height: 1.35; }
+.dev-arrow { position: absolute; top: calc(var(--dev-h) / 2); left: 100%; width: var(--gap); display: flex; justify-content: center; transform: translateY(-50%); color: var(--ink); pointer-events: none; }
+.dev-arrow svg { width: calc(var(--gap) - 8px); height: 20px; overflow: visible; }
+.dev-arrow path { fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+.dev-foot { margin: 14px 0 0; font-size: .95rem; color: var(--ink-2); }
+.dev-foot .dev-sum { font-style: italic; }
+.dev-link { font-family: var(--font-display); font-weight: 650; font-stretch: 95%; color: var(--ink); white-space: nowrap; margin-left: 6px; }
+.dev-link::after { content: " \2192"; }
+.dev .hero-tb { grid-template-columns: 1.25fr 1.55fr 1fr .9fr 1fr; margin-top: 16px; }
+.dev .hero-tb .name { grid-row: auto; }
+.dev .hero-tb > div { border-right: 1px solid var(--rule); }
+.dev .hero-tb > div:last-child { border-right: 0; }
+@media (prefers-reduced-motion: no-preference) {
+  .dev-flow.anim .dev-step { animation: dev-in .45s ease both; }
+  .dev-flow.anim .dev-step:nth-child(2) { animation-delay: .32s; }
+  .dev-flow.anim .dev-step:nth-child(3) { animation-delay: .64s; }
+  .dev-flow.anim .dev-arrow path { stroke-dasharray: 48; stroke-dashoffset: 48; animation: dev-draw .3s ease forwards; }
+  .dev-flow.anim .dev-step:nth-child(1) .dev-arrow path { animation-delay: .2s; }
+  .dev-flow.anim .dev-step:nth-child(2) .dev-arrow path { animation-delay: .52s; }
+}
+@keyframes dev-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+@keyframes dev-draw { to { stroke-dashoffset: 0; } }
+@media screen and (max-width: 980px) {
+  .hero-top { grid-template-columns: 1fr; align-items: start; }
+  .dev .hero-tb { grid-template-columns: 1.4fr 1fr 1fr; }
+  .dev .hero-tb > div:nth-child(3) { border-right: 0; }
+}
+@media screen and (max-width: 680px) {
+  .dev { padding: 14px 14px 0; }
+  .dev-flow { grid-template-columns: 1fr; row-gap: 0; --dev-h: 230px; }
+  .dev .seg { display: grid; grid-template-columns: 1fr 1fr; width: 100%; }
+  .dev .seg button { border-left: 1.5px solid var(--ink); text-align: center; }
+  .dev .seg button:nth-child(odd) { border-left: 0; }
+  .dev .seg button:nth-child(n+3) { border-top: 1.5px solid var(--ink); }
+  .dev-step { padding-bottom: 46px; }
+  .dev-step:last-child { padding-bottom: 0; }
+  .dev-arrow { top: auto; bottom: 4px; left: 50%; width: 40px; height: 38px; transform: translateX(-50%) rotate(90deg); }
+  .dev-arrow svg { width: 36px; }
+  .dev .hero-tb { grid-template-columns: 1fr 1fr; margin-inline: -14px; }
+  .dev .hero-tb .name { grid-column: span 2; }
+  .dev .hero-tb > div:nth-child(3) { border-right: 1px solid var(--rule); }
+  .dev .hero-tb > div:nth-child(odd):not(.name) { border-right: 0; }
+}
+
+/* cover: Navy mixer, drawing -> development steps -> finished mixer */
+.dev-flow2 { --dev-h: clamp(220px, 21vw, 300px); display: grid; grid-template-columns: minmax(0, 1fr) clamp(130px, 13vw, 180px) minmax(0, 1fr); column-gap: clamp(14px, 2vw, 26px); align-items: start; }
+.dev-flow2 .dev-step { min-width: 0; }
+.dev-path { height: var(--dev-h); display: flex; flex-direction: column; justify-content: center; gap: 10px; }
+.dev-path-l { margin: 0; }
+.dev-steps { list-style: none; margin: 0; padding: 0 0 0 4px; display: grid; gap: 0; position: relative; }
+.dev-steps::before { content: ""; position: absolute; left: 7px; top: 9px; bottom: 9px; border-left: 1.5px dashed var(--rule); }
+.dev-steps li { position: relative; display: flex; align-items: center; gap: 10px; padding: 4px 0; font-family: var(--font-display); font-weight: 640; font-stretch: 94%; font-size: .9rem; line-height: 1.2; }
+.dev-steps li::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--hivis); box-shadow: 0 0 0 2px var(--sheet); flex: none; position: relative; z-index: 1; }
+.dev-bigarrow { width: 100%; height: 26px; overflow: visible; color: var(--ink); margin-top: 2px; }
+.dev-bigarrow path { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+@media (prefers-reduced-motion: no-preference) {
+  .dev2.anim .dev-flow2 > .dev-step:first-child { animation: dev-in .5s ease both; }
+  .dev2.anim .dev-steps li { animation: dev-in .35s ease both; }
+  .dev2.anim .dev-steps li:nth-child(1) { animation-delay: .35s; }
+  .dev2.anim .dev-steps li:nth-child(2) { animation-delay: .5s; }
+  .dev2.anim .dev-steps li:nth-child(3) { animation-delay: .65s; }
+  .dev2.anim .dev-steps li:nth-child(4) { animation-delay: .8s; }
+  .dev2.anim .dev-steps li:nth-child(5) { animation-delay: .95s; }
+  .dev2.anim .dev-bigarrow path { stroke-dasharray: 130; stroke-dashoffset: 130; animation: dev-draw .5s ease 1.1s forwards; }
+  .dev2.anim .dev-flow2 > .dev-step:last-child { animation: dev-in .55s ease 1.45s both; }
+}
+@media screen and (max-width: 680px) {
+  .dev-flow2 { grid-template-columns: 1fr; --dev-h: 240px; }
+  .dev-flow2 .dev-step { padding-bottom: 0; }
+  .dev-path { height: auto; padding: 14px 0 6px; align-items: flex-start; gap: 6px; }
+  .dev-bigarrow { width: 44px; height: 30px; transform: rotate(90deg); align-self: center; margin: 6px 0; }
+}
+
+/* flight-test video with phase chapters */
+.vid { padding: 0 !important; background: #0E1113; }
+.vid video { display: block; width: 100%; height: auto; aspect-ratio: 848 / 448; background: #0E1113; }
+.vchap { list-style: none; margin: 10px 0 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 10px; }
+.vchap li { min-width: 0; }
+.vchap button { -webkit-appearance: none; appearance: none; border: 0; margin: 0; font: inherit; color: var(--ink); text-align: left; cursor: pointer; width: 100%; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: baseline; column-gap: 8px; padding: 0 0 8px; background:
+    linear-gradient(var(--hivis), var(--hivis)) left bottom / var(--p, 0%) 3px no-repeat,
+    linear-gradient(var(--rule), var(--rule)) left bottom / 100% 3px no-repeat; }
+.vchap img { grid-column: 1 / -1; width: 100%; height: auto; aspect-ratio: 480 / 253; object-fit: cover; display: block; margin-bottom: 7px; border: 1px solid var(--rule); opacity: .82; transition: opacity .2s; }
+.vchap .vt { font-family: var(--font-display); font-weight: 650; font-size: .76rem; color: var(--ink-2); font-variant-numeric: tabular-nums; }
+.vchap b { font-family: var(--font-display); font-weight: 700; font-stretch: 96%; font-size: .9rem; line-height: 1.2; }
+.vchap button:hover img, .vchap button[aria-current="true"] img { opacity: 1; }
+.vchap button[aria-current="true"] img { border-color: var(--ink); }
+.vchap button:hover b { text-decoration: underline; text-underline-offset: 3px; }
+.vchap button:focus-visible { outline: 3px solid var(--hivis); outline-offset: 3px; }
+@media screen and (max-width: 680px) {
+  .vchap { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 40%; overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 4px; }
+  .vchap li { scroll-snap-align: start; }
+}
+
+/* intro: resume-style summary rows */
+.intro-dl { margin: 2px 0 0; display: grid; gap: 9px; }
+.intro-dl > div { display: grid; grid-template-columns: 6.6rem minmax(0, 1fr); column-gap: 14px; padding-top: 9px; border-top: 1px solid var(--rule); }
+.intro-dl > div:first-child { border-top: 0; padding-top: 0; }
+.intro-dl dt { margin: 0; padding-top: 3px; }
+.intro-dl dt a { color: inherit; text-decoration: none; }
+.intro-dl dt a:hover { text-decoration: underline; }
+.intro-dl dd { margin: 0; font-size: .98rem; line-height: 1.45; }
+.intro-dl dd a { color: inherit; text-decoration: underline; text-decoration-color: var(--hivis); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.intro-dl dd a:hover { text-decoration-color: currentColor; }
+.hero-intro .actions { margin-top: 18px; }
+@media screen and (max-width: 680px) {
+  .intro-dl > div { grid-template-columns: 1fr; row-gap: 3px; }
+}
+
+/* intro: R&D cycle, drawn as a loop of four linked steps */
+.hero-sum .body { margin-top: 12px; max-width: 52ch; }
+.rd-cycle { list-style: none; margin: 16px 0 0; padding: 0; max-width: 470px; display: grid; grid-template-columns: minmax(0, 1fr) 34px minmax(0, 1fr); grid-template-rows: auto 26px auto; }
+.rd-cycle li { position: relative; display: flex; }
+.rd-cycle .c1 { grid-area: 1 / 1; } .rd-cycle .c2 { grid-area: 1 / 3; } .rd-cycle .c3 { grid-area: 3 / 3; } .rd-cycle .c4 { grid-area: 3 / 1; }
+.rd-cycle a { flex: 1; display: flex; align-items: center; gap: 8px; padding: 7px 10px; border: 1.5px solid var(--ink); border-radius: 3px; background: var(--sheet); color: var(--ink); text-decoration: none; font-family: var(--font-display); font-weight: 680; font-stretch: 95%; font-size: .9rem; line-height: 1.15; }
+.rd-cycle a:hover { background: var(--ink); color: var(--sheet); }
+.rd-cycle a:focus-visible { outline: 3px solid var(--hivis); outline-offset: 2px; }
+.rd-cycle .n { flex: none; font-weight: 800; font-stretch: 100%; font-size: .72rem; line-height: 1; padding: 3px 5px; border-radius: 2px; background: var(--hivis); color: #1B2226; }
+.rd-cycle li::after { position: absolute; color: var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 1.05rem; line-height: 1; pointer-events: none; }
+.rd-cycle .c1::after { content: "\2192"; left: 100%; top: 50%; width: 34px; text-align: center; transform: translateY(-50%); }
+.rd-cycle .c2::after { content: "\2193"; top: 100%; left: 50%; height: 26px; display: flex; align-items: center; transform: translateX(-50%); }
+.rd-cycle .c3::after { content: "\2190"; right: 100%; top: 50%; width: 34px; text-align: center; transform: translateY(-50%); }
+.rd-cycle .c4::after { content: "\2191"; bottom: 100%; left: 50%; height: 26px; display: flex; align-items: center; transform: translateX(-50%); }
+.rd-hint { margin: 8px 0 0; font-size: .82rem; color: var(--ink-2); font-style: italic; }
+
+/* print: the PDF portfolio. Each project prints as a picture page followed by a narrative page. */
+@page { size: Letter; margin: .42in .5in; }
+@media print {
+  :root { --paper: #FFFFFF; --sheet: #FFFFFF; --plate: #FFFFFF; --ink: #1B2226; --ink-2: #4D575C; --rule: #C3C9C4; --hivis-ink: #6B5000; --steel: #42525A; color-scheme: light; }
+  html { font-size: 11px; }
+  body { line-height: 1.5; }
+  * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .masthead nav, .hero .actions { display: none; }
+  .masthead { border: 0; }
+  .masthead .wrap { padding-block: 0 6px; }
+  .wrap { max-width: none; padding-inline: 0; }
+  .hero { padding: 10px 0 0; }
+  .hero-grid { grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 28px; }
+  .hero h1 { font-size: 2.6rem; }
+  .hero .lead { font-size: 1.2rem; margin-top: 16px; }
+  .hero-sheet figure img { max-height: 2.35in; width: auto; margin-inline: auto; }
+  .hero-sheet { padding: 14px 14px 0; }
+  .hero-tb { margin-inline: -14px; }
+  .hero .body { font-size: .95rem; }
+  #work .section-head p { display: none; }
+  .keydata { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 14px; }
+  .keydata > div:nth-child(3) { padding-left: 18px; border-left: 1px solid var(--rule); }
+  .keydata > div:nth-child(n+3) { border-top: 0; }
+  .keydata b { font-size: 1.8rem; }
+  .keydata > div { padding-block: 6px 8px; }
+  .section { padding-top: 18px; }
+  .section-head { margin-bottom: 12px; }
+  #work > .wrap > .section-head, .drawlist { break-inside: avoid; }
+  .drawlist td { padding: 4px 12px; }
+  .drawlist th { padding-block: 5px; }
+  .project { display: flex; flex-direction: column; break-before: page; margin-top: 0; padding: 0; border: 0; box-shadow: none; }
+  .sheet-tab { right: 0; top: 0; }
+  .project h2 { order: 1; font-size: 2.2rem; max-width: 40ch; }
+  .project .summary { order: 2; font-size: 1.15rem; }
+  .project .proj-tb { order: 3; margin-top: 16px; }
+  .project .hero-fig { order: 4; margin-top: 16px; }
+  .project .figs { order: 5; margin-top: 16px; break-inside: avoid; }
+  .project .proj-body { order: 6; break-before: page; margin-top: 0; padding-top: 4px; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); }
+  .proj-tb { grid-template-columns: .9fr 1.2fr 1.5fr 1fr 1.5fr; }
+  .hero-fig .plate img { max-height: 3.3in; width: auto; }
+  .hero-fig .plate:not(.photo):not(.chart) img { max-height: 3.3in; }
+  #next-gen .hero-fig .plate img { max-height: 3.0in; }
+  #next-gen > .figs .plate img { max-height: 1.45in; }
+  #next-gen .figs .plate.photo.fit { max-height: 1.5in; }
+  #next-gen .summary { font-size: 1.05rem; }
+  #next-gen h2 { font-size: 2rem; }
+  #batch-plant .hero-fig .plate img { max-height: 2.8in; }
+  #batch-plant .figs .plate img { max-height: 1.8in; }
+  #batch-plant .summary { font-size: 1.08rem; }
+  .hero-fig .plate.photo img { max-height: 3.0in; width: auto !important; margin-inline: auto; object-fit: contain; }
+  #mobile-silo .hero-fig .plate img { max-height: 3.4in; }
+  .figs .plate img { max-height: 1.75in; width: auto; }
+  .figs .plate.photo img { width: auto; }
+  .figs .plate.photo.fit { max-height: 1.75in; }
+  .figs .plate.photo.fit img { max-height: none; width: 100%; height: 100%; }
+  .project > .after { order: 7; }
+  .project > .after.pb { break-before: page; margin-top: 0; }
+  .chart-fig svg { max-height: 3.2in; }
+  .subwork { break-inside: avoid; }
+  #navy-mixer .figs.navy-b { order: 7; margin-top: 22px; }
+  #navy-mixer .hero-fig .plate.photo img { width: auto !important; max-height: 3.0in; object-fit: contain; margin-inline: auto; }
+  .figs.c4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .figs.c3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .figs.c2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  figure, .results .r, .job, .skill, .cred, .more article, .chart { break-inside: avoid; }
+  .chart svg { max-height: 2.9in; }
+  .proj-body h3 { margin-top: 18px; }
+  #more { break-before: page; }
+  .more { grid-template-columns: 1fr 1fr 1fr; column-gap: 22px; }
+  .more article { padding-block: 12px 14px; }
+  #experience .job { padding: 7px 0; }
+  #experience .job li { font-size: .9rem; line-height: 1.36; }
+  .skill p, .cred p { font-size: .84rem; line-height: 1.34; }
+  .skill h3, .cred h3 { font-size: .9rem; }
+  .skills, .creds { row-gap: 8px; }
+  .skill, .cred { padding-block: 6px; }
+  #experience .job ul { margin-top: 6px; gap: 3px; }
+  .skill .used { display: none; }
+  #skills { break-before: auto; }
+  .cols2 { grid-template-columns: 1fr 1fr; }
+  .skill, .cred { padding: 10px 0; }
+  .contact { break-inside: avoid; margin-top: 14px; }
+  .contact .wrap { padding: 18px 24px; grid-template-columns: 1.1fr 1fr; }
+  footer .wrap { padding: 0 28px 16px; }
+  a { text-decoration-thickness: 2px; }
+  .masthead { position: static; -webkit-backdrop-filter: none; backdrop-filter: none; background: none; }
+  .progress, .now, .screen-only, .lb, .tl-legend, .tl-stage, .tl-nav, .tl-hit .dot, .tl-intro { display: none !important; }
+  .tl-scroll { overflow: visible; padding: 0; margin-top: 8px; }
+  .tl-list { display: block; columns: 2; column-gap: 24px; min-width: 0; }
+  .tl-list::before { display: none; }
+  .tl-list > li { break-inside: avoid; padding: 3px 0 4px; border-bottom: 1px solid var(--rule); }
+  .tl-hit { flex-direction: row; width: auto; gap: 10px; padding: 0; color: var(--ink); align-items: baseline; }
+  .tl-date { min-width: 6.4em; font-size: .86rem; }
+  .tl-title { font-size: .9rem; }
+  #equipment { break-before: page; }
+  .gal { columns: 4; column-gap: 10px; }
+  .gal figure[hidden] { display: block !important; }
+  .gal figure { margin-bottom: 10px; }
+  .gal img { max-height: 1.9in; object-fit: cover; }
+  .gal figcaption { font-size: .78rem; }
+  .chart-ctl { display: none !important; }
+  .hero-top { grid-template-areas: "h1 h1" "lead dl" "body cyc"; row-gap: 6px; }
+  .hero-top h1 { grid-area: h1; }
+  .hero-sum, .hero-intro { display: contents; }
+  .hero-sum .lead { grid-area: lead; }
+  .hero-sum .body { grid-area: body; margin-top: 0; font-size: .84rem; line-height: 1.4; }
+  .rd-cycle { grid-area: cyc; align-self: start; }
+  .intro-dl { grid-area: dl; }
+  .intro-dl .intro-exp { display: none; }
+  .intro-dl > div:nth-child(2) { border-top: 0; padding-top: 0; }
+  .rd-cycle { margin-top: 2px; max-width: 330px; grid-template-columns: minmax(0, 1fr) 26px minmax(0, 1fr); grid-template-rows: auto 16px auto; }
+  .rd-cycle a { padding: 3px 7px; font-size: .78rem; }
+  .rd-cycle .c1::after, .rd-cycle .c3::after { width: 26px; }
+  .rd-cycle .c2::after, .rd-cycle .c4::after { height: 16px; }
+  .intro-dl { gap: 4px; }
+  .intro-dl > div { padding-top: 4px; grid-template-columns: 5.6rem minmax(0, 1fr); }
+  .intro-dl .intro-edu { display: none; }
+  .intro-dl dd { font-size: .86rem; line-height: 1.35; }
+  .intro-dl dd a { text-decoration: none; }
+  .vchap { gap: 8px; margin-top: 0; }
+  .vchap button { background: none; padding: 0; }
+  .vchap img { opacity: 1; max-height: none; }
+  .vchap b { font-size: .82rem; }
+  .dev-flow2 { --dev-h: 1.28in; grid-template-columns: minmax(0, 1fr) 120px minmax(0, 1fr); column-gap: 14px; }
+  .dev2 .dev-step, .dev2 .dev-steps li { animation: none !important; }
+  .dev2 .dev-bigarrow path { animation: none !important; stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+  .dev-steps li { font-size: .82rem; padding: 2px 0; }
+  .hero-top { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 28px; align-items: start; }
+  .hero-top h1 { max-width: none; margin-bottom: 12px; }
+  .dev { margin-top: 12px; padding: 12px 14px 0; }
+  .dev-head { margin-bottom: 10px; }
+  .dev-flow { --dev-h: 1.75in; --gap: 40px; }
+  .dev-flow .dev-step { animation: none !important; }
+  .dev-flow .dev-arrow path { animation: none !important; stroke-dasharray: none !important; stroke-dashoffset: 0 !important; }
+  .dev .dev-img img { width: 100%; height: 100%; max-height: none; margin: 0; }
+  .dev-foot { margin-top: 8px; font-size: .9rem; }
+  .dev .hero-tb { margin-inline: -14px; margin-top: 10px; }
+  .more-proj { display: none !important; }
+  #wave-energy .hero-fig svg { max-height: 1.95in; }
+  #wave-energy .figs .plate img { max-height: 1.3in; }
+  #uav .hero-fig .plate.photo img { max-height: 2.2in; }
+  #uav .figs .plate img { max-height: 1.75in; }
+  #sprayer .figs .plate img { max-height: 1.55in; }
+  #sprayer .figs .plate.photo.fit { max-height: 1.55in; }
+  .project .brief { order: 5; margin-top: 14px; break-inside: avoid; }
+  .project > .figs { order: 6; }
+  .project > .after.pb { break-before: auto; margin-top: 16px; }
+  .project > .after { margin-top: 16px; }
+  .whw { grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr) minmax(0, 1fr); }
+  .whw > div { padding: 12px 16px 14px; }
+  .whw > .w-why { background: #FBF5E1; }
+  .whw p, .whw li, .w-why p { font-size: .98rem; }
+  .kpis dt { font-size: 1.55rem; }
+  .kpis > div { padding: 10px 14px 12px; }
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <a class="wordmark" href="#top">Cecil Mashongedza</a>
+    <span class="now" aria-live="off">Overview</span>
+    <nav aria-label="Sections">
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#equipment">Equipment</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+  <span class="progress" aria-hidden="true"></span>
+</header>
+
+<main id="top">
+  <section class="hero" data-spy="Overview" data-nav="">
+    <div class="wrap">
+      <div class="hero-top">
+        <h1>Product design and manufacturing engineering.</h1>
+        <div class="hero-sum">
+          <p class="lead">I’m Tatenda Cecil Mashongedza, a mechanical engineer in Salem, Oregon, concentrating on product design and manufacturing processes.</p>
+          <p class="body">For 3+ years I’ve developed industrial equipment, UAV systems and manufactured products from concept through CAD and FEA, prototyping, testing and production. I’m most drawn to research and development across the full product cycle: from ideation and prototyping to field deployment, then improving the product and its manufacturing process from what the field shows.</p>
+          <ol class="rd-cycle" aria-label="My product development cycle, each step linked to an example">
+            <li class="c1"><a href="#next-gen" title="Example: the modular next-generation plant"><span class="n">1</span>Ideation</a></li>
+            <li class="c2"><a href="#uav" title="Example: the VTOL drone prototype"><span class="n">2</span>Prototyping</a></li>
+            <li class="c3"><a href="#batch-plant" title="Example: the UCBL2 installed at a customer"><span class="n">3</span>Field deployment</a></li>
+            <li class="c4"><a href="#h-tl" title="Example: 15 field changes in commissioning"><span class="n">4</span>Process improvement</a></li>
+          </ol>
+          <p class="rd-hint screen-only">Select a step for an example from my work.</p>
+        </div>
+        <div class="hero-intro">
+          <dl class="intro-dl">
+            <div class="intro-exp"><dt class="label"><a href="#experience">Experience</a></dt><dd>Production Manager (since Sep 2026) and Lead Mechanical Engineer at Cart-Away Concrete Systems, and Product Design Engineer at Rovikk. Before that, a 15-technician production line at Steel Cave and lead mechanical engineer at FlighTech.</dd></div>
+            <div><dt class="label"><a href="#work">Projects</a></dt><dd>A 60 yd³/h <a href="#batch-plant">weighed batch plant</a> at 0.31% cement error, an <a href="#navy-mixer">off-grid Navy mixer</a> with 60+ units required after testing, a <a href="#mobile-silo">towable 200-barrel silo</a>, a <a href="#uav">VTOL medical-delivery drone</a> and a <a href="#wave-energy">wave energy converter</a>.</dd></div>
+            <div><dt class="label"><a href="#skills">Skills</a></dt><dd>SolidWorks CAD/FEA, DFM/DFA, GD&amp;T, weldments, drawings and BOMs, CNC and 3D printing, composites, electromechanical integration, Siemens NX.</dd></div>
+            <div class="intro-edu"><dt class="label">Education</dt><dd>M.Eng, UC Berkeley (Product Design); B.S., Ashesi University.</dd></div>
+          </dl>
+          <div class="actions">
+            <a class="btn primary" href="#work">See the work</a>
+            <a class="btn" href="#contact">Get in touch</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="sheet hero-sheet dev dev2 anim" aria-labelledby="dev-l">
+        <div class="dev-head">
+          <h2 class="label dev-label" id="dev-l">Product development: off-grid concrete mixer for U.S. Navy field evaluation</h2>
+        </div>
+        <div class="dev-flow2">
+          <figure class="dev-step">
+            <div class="dev-img draw"><img width="1246" height="963" src="img/navy-iso.webp" alt="Shaded isometric drawing of the trailer-mounted off-grid concrete mixer with safety cages, bag breaker and discharge chute, with numbered item balloons." data-cap="Navy mixer, the drawing: general arrangement from my drawing package." fetchpriority="high"></div>
+            <figcaption><span class="dev-n">01</span><b class="dev-stage">The drawing</b><span class="dev-cap">General arrangement from my drawing package</span></figcaption>
+          </figure>
+          <div class="dev-path">
+            <p class="label dev-path-l">Product development</p>
+            <ol class="dev-steps">
+              <li>Configuration drawings</li>
+              <li>Global BOM</li>
+              <li>Build</li>
+              <li>Shop QC</li>
+              <li>Manuals and training</li>
+            </ol>
+            <svg class="dev-bigarrow" viewBox="0 0 120 26" aria-hidden="true"><path d="M3 13 H113"/><path d="M100 3 L115 13 L100 23"/></svg>
+          </div>
+          <figure class="dev-step">
+            <div class="dev-img final"><img width="1600" height="1200" src="img/ph-navy-side.webp" alt="The finished off-grid concrete mixer in olive drab on its tandem-axle trailer in the shop, with mixing drum, safety cage, control panel and top-loader conveyor." data-cap="Navy mixer, the finished unit: after shop QC, shipped for Navy field testing." style="object-position:50% 60%"></div>
+            <figcaption><span class="dev-n">02</span><b class="dev-stage">The finished mixer</b><span class="dev-cap">After shop QC, shipped for Navy field testing</span></figcaption>
+          </figure>
+        </div>
+        <p class="dev-foot"><span class="dev-sum">One of my major Cart-Away projects. After field testing, the Navy requires 60+ units: more than $2M in follow-on revenue.</span> <a class="dev-link" href="#navy-mixer">See Sheet 4</a></p>
+        <dl class="titleblock hero-tb">
+          <div class="name"><dt class="label">Drawn by</dt><dd>Tatenda Cecil Mashongedza</dd></div>
+          <div><dt class="label">Role</dt><dd>Lead Mechanical Engineer and Production Manager, Cart-Away</dd></div>
+          <div><dt class="label">Also</dt><dd>Product Design Engineer, Rovikk</dd></div>
+          <div><dt class="label">Education</dt><dd>M.Eng, UC Berkeley</dd></div>
+          <div class="sheetno"><dt class="label">Sheet</dt><dd>Portfolio, rev. Nov 2026</dd></div>
+        </dl>
+      </div>
+
+      <div class="keydata" role="list" aria-label="Key figures">
+        <div role="listitem"><b class="num">0.31%</b><span>mean cement error on the plant I redesigned, down from 7–21%</span></div>
+        <div role="listitem"><b class="num">15</b><span>field changes in commissioning, each fixing what the plant showed</span></div>
+        <div role="listitem"><b class="num">25+</b><span>drawing packages released to fabrication</span></div>
+        <div role="listitem"><b class="num">50+</b><span><a href="#equipment">units QC’d</a> before shipping, zero warranty claims</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="work" data-spy="Selected work" data-nav="#work">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Selected work</h2>
+        <p>Seven projects. Each sheet gives the what, how and why at a glance; open <b>More on this project</b> for the full story.</p>
+      </div>
+      <table class="drawlist">
+        <thead>
+          <tr><th class="label" scope="col">Sheet</th><th class="label" scope="col">Project</th><th class="label" scope="col">Where</th><th class="label" scope="col" style="text-align:right">Year</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1</td><td class="proj"><a href="#batch-plant">Short-load batch plant that weighs every batch</a></td><td class="ctx">Cart-Away Concrete Systems</td><td class="yr num">2025–26</td></tr>
+          <tr><td>2</td><td class="proj"><a href="#next-gen">Modular next-generation plant and retrofit kit</a></td><td class="ctx">Cart-Away Concrete Systems</td><td class="yr num">2026</td></tr>
+          <tr><td>3</td><td class="proj"><a href="#mobile-silo">Mobile 200-barrel cement silo</a></td><td class="ctx">Cart-Away Concrete Systems</td><td class="yr num">2025–26</td></tr>
+          <tr><td>4</td><td class="proj"><a href="#navy-mixer">Off-grid concrete mixer for U.S. Navy evaluation</a></td><td class="ctx">Cart-Away Concrete Systems</td><td class="yr num">2025–26</td></tr>
+          <tr><td>5</td><td class="proj"><a href="#uav">Fixed-wing VTOL drone for medical delivery</a></td><td class="ctx">FlighTech, Zimbabwe</td><td class="yr num">2021–23</td></tr>
+          <tr><td>6</td><td class="proj"><a href="#wave-energy">Inflatable wave energy converter</a></td><td class="ctx">UC Berkeley, TAFLab</td><td class="yr num">2024–25</td></tr>
+          <tr><td>7</td><td class="proj"><a href="#sprayer">Wheel-driven crop sprayer for smallholder farms</a></td><td class="ctx">Ashesi University</td><td class="yr num">2021–22</td></tr>
+        </tbody>
+      </table>
+
+      <!-- SHEET 1 -->
+      <article class="sheet project" id="batch-plant" data-spy="Sheet 1 of 7: Weighed batch plant" data-nav="#work" aria-labelledby="h-batch">
+        <span class="sheet-tab">Sheet 1 of 7</span>
+        <h2 id="h-batch">Redesigning a short-load batch plant to weigh every batch</h2>
+        <p class="summary">Short-load plants metered by run time, with no scales, and one ran 7–21% off on cement. I engineered one that weighs every batch and stayed with it in the field until it held 0.31%.</p>
+
+        <dl class="titleblock proj-tb">
+          <div><dt class="label">Period</dt><dd>Aug 2025 – present</dd></div>
+          <div><dt class="label">Company</dt><dd>Cart-Away Concrete Systems</dd></div>
+          <div><dt class="label">My role</dt><dd>Design, drawings, BOMs, install package, testing, field changes</dd></div>
+          <div><dt class="label">Team</dt><dd>Controls by the software lead; built by the production team</dd></div>
+          <div><dt class="label">Tools</dt><dd>SolidWorks, load cells, run-log analysis</dd></div>
+        </dl>
+
+        <figure class="hero-fig">
+          <div class="plate photo" style="padding:0"><img width="1800" height="1350" src="img/ucbl-jun.webp" alt="The UCBL2 plant in production at the customer's yard: cement silo and aggregate bins under the shed, the cement auger, and the red-covered load conveyor on its stand." style="width:100%"></div>
+          <figcaption><b>Fig. 1.1</b> In production at the customer’s yard, June 2026.</figcaption>
+        </figure>
+
+        <div class="brief">
+          <div class="whw">
+            <div class="w-what"><h3>What</h3><p><b>UCBL2</b>, a short-load concrete batch plant rated at 60 yd³/h, with two 10 yd³ aggregate bins. It weighs cement, sand and rock on load cells, meters water and logs every batch, replacing timed metering that ran 7–21% off on cement.</p></div>
+            <div class="w-how"><h3>How</h3><ul><li>Engineered it from design through fabrication: frame, drawings, BOMs, footing and install package.</li><li>Installed it at a Portland customer in March 2026 and stayed through commissioning.</li><li>Made 15 field changes from what the run log showed, including a cement diverter and discharge gate I designed and bin-gate flow restrictors.</li><li>Checked every run against batching tolerances: ±1% cement and water, ±2% sand and rock.</li></ul></div>
+            <div class="w-why"><h3>Why it matters</h3><p>The customer gets specified concrete with a weight record behind every load; every run since July 9 has met all four tolerances. And it repeats: a second plant runs in Montana, two more are in production.</p></div>
+          </div>
+          <dl class="kpis"><div><dt class="num">60 yd³/h</dt><dd>rated output</dd></div><div><dt class="num">2 × 10 yd³</dt><dd>aggregate bins</dd></div><div><dt class="num">0.31%</dt><dd>mean cement error, Aug–Sep 2026</dd></div><div><dt class="num">144 / 144</dt><dd>runs within tolerance on all four materials</dd></div><div><dt class="num">0.7%</dt><dd>sand and rock error, down from 5.8–6.8%</dd></div><div><dt class="num">387 yd³</dt><dd>accepted concrete, Jun–Sep 2026</dd></div></dl>
+          <details class="more-proj" id="batch-plant-more">
+            <summary><span class="mo">More on this project</span><span class="less">Show less</span></summary>
+            <div class="more-body">
+              <div>
+                <h4>The problem</h4>
+                <p>Cart-Away’s short-load plants have proportioned material by gate opening and run time for 25 years, calibrated by hand. Calibration drifts, timers fault, and nothing records what went into a load. One earlier CBL2 ran 7.0 to 21.1% off on cement across its calibration cycles, with single tests from −22% to +38%.</p>
+                <h4>What I did</h4>
+                <ul><li><b>Weighed design.</b> Rated at 60 yd³/h, with two 10 yd³ aggregate bins. Cement, sand and rock sit on load cells and water is metered; the controller logs target and actual weight of each, every run.</li><li><b>Commissioning.</b> Six test batches were rejected before the software lead replaced the original controller on June 3. Then 15 field changes: my cement diverter and air-cylinder discharge gate, bin-gate flow restrictors, skirt boards, a chevron belt where cement hardened on the smooth one, discharge raised from 120 to 150 in., electric bin vibrators, an 80 GPM water pump, a three-belt drive and dust controls.</li><li><b>Roll-off mixer.</b> Customized the customer’s 4-yard mixer as a roll-on/roll-off unit for a hook-lift truck.</li><li><b>Recycled aggregate.</b> Adapted the recipes to crushed recycled concrete; the customer makes paving blocks from recycled material, with reinforcement recovered from mattresses.</li><li><b>Back into the drawings.</b> Every change went into the drawing package used for the next builds.</li></ul>
+              </div>
+              <div>
+                <h4>How I checked it</h4>
+                <p>I reviewed every logged run against published tolerances. The log showed exactly where flow was off: sand and rock ran 5.8 and 6.8% over target until the restrictors went in on June 29, then held at about 0.7%. In August and September all 144 accepted runs passed, and the controller stopped 18 more on missing material.</p>
+                <p class="note">Accuracy figures are ingredient weights from the controller’s run log, not concrete strength tests.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+
+        <div class="figs c4">
+          <figure>
+            <div class="plate photo fit" style="--ar: 3 / 4; --pos: 64% 50%"><img width="1400" height="1050" src="img/ph-shop-panel.webp" alt="Cecil in a white hard hat working through the wiring of a batch plant's control panel with a technician in the shop." loading="lazy"></div>
+            <figcaption><b>Fig. 1.2</b> Wiring a control panel with a technician in the shop.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo fit" style="--ar: 3 / 4; --pos: 45% 50%"><img width="1100" height="1119" src="img/ecr-pour.webp" alt="Concrete pouring from a mixer truck chute into a reinforced block form while Cecil and the customer's crew watch." loading="lazy"></div>
+            <figcaption><b>Fig. 1.3</b> A production pour into a reinforced block form.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo fit" style="--ar: 3 / 4; --pos: 55% 70%"><img width="1400" height="1050" src="img/ecr-screen.webp" alt="The plant's operator screen showing live rock, sand and cement weights, recipe buttons from 3000 to 6000 psi, and cement silo weight." loading="lazy"></div>
+            <figcaption><b>Fig. 1.4</b> Operator screen: live weights, recipes from 3,000 to 6,000 psi.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo fit" style="--ar: 3 / 4; --pos: 50% 55%"><img width="1400" height="1050" src="img/ucbl-block.webp" alt="A freshly finished concrete paving block in its blue form at the customer's yard." loading="lazy"></div>
+            <figcaption><b>Fig. 1.5</b> A finished block, July 2026.</figcaption>
+          </figure>
+        </div>
+
+        <figure class="after pb chart-fig" id="acc-chart">
+          <div class="chart-ctl">
+            <div>
+              <p class="label ctl-label" id="mat-l">Material</p>
+              <div class="seg screen-only" role="group" aria-labelledby="mat-l">
+                <button type="button" data-mat="cement" aria-pressed="true">Cement</button>
+                <button type="button" data-mat="sand" aria-pressed="false">Sand</button>
+                <button type="button" data-mat="rock" aria-pressed="false">Rock</button>
+                <button type="button" data-mat="water" aria-pressed="false">Water</button>
+              </div>
+            </div>
+            <p class="chart-note screen-only" aria-live="polite"></p>
+          </div>
+          <div class="plate chart">
+            <svg viewBox="0 0 660 292" role="img" aria-labelledby="cem-chart-title">
+              <title id="cem-chart-title">Mean cement error from recipe: earlier CBL2 calibration cycles 21.1%, 8.9% and 7.0%; UCBL2 1.19%, 1.79%, 0.47% and 0.31%</title>
+              <g class="grid">
+                <line x1="262" x2="262" y1="18" y2="262"/>
+                <line x1="342" x2="342" y1="18" y2="262"/>
+                <line x1="422" x2="422" y1="18" y2="262"/>
+                <line x1="502" x2="502" y1="18" y2="262"/>
+                <line x1="582" x2="582" y1="18" y2="262"/>
+              </g>
+              <g class="axis" text-anchor="middle">
+                <text x="262" y="280">0%</text>
+                <text x="342" y="280">5%</text>
+                <text x="422" y="280">10%</text>
+                <text x="502" y="280">15%</text>
+                <text x="582" y="280">20%</text>
+              </g>
+              <g class="grp">
+                <text x="252" y="22" text-anchor="end">Earlier CBL2, timed metering</text>
+                <text x="252" y="146" text-anchor="end">UCBL2, weighed</text>
+              </g>
+              <g class="xl" text-anchor="end">
+                <text x="252" y="45">Dec 2025 calibration, 30 tests</text>
+                <text x="252" y="73">Mar–Apr 2026 calibration, 30 tests</text>
+                <text x="252" y="101">Jul 2026 calibration, 30 tests</text>
+                <text x="252" y="169">Controls replaced, Jun 3–5, 6 runs</text>
+                <text x="252" y="197">Flow changes, Jun 8 – Jul 6, 46 runs</text>
+                <text x="252" y="225">Full production, Jul 7–31, 35 runs</text>
+                <text x="252" y="253">Aug–Sep 2026, 144 runs</text>
+              </g>
+              <!-- scale: 16 px per percentage point, x0 = 262 -->
+              <path class="bar" d="M262 32 H595.6 a4 4 0 0 1 4 4 V46 a4 4 0 0 1 -4 4 H262 Z"><title>Dec 2025 calibration: 21.1%</title></path>
+              <path class="bar" d="M262 60 H400.4 a4 4 0 0 1 4 4 V74 a4 4 0 0 1 -4 4 H262 Z"><title>Mar–Apr 2026 calibration: 8.9%</title></path>
+              <path class="bar" d="M262 88 H370 a4 4 0 0 1 4 4 V102 a4 4 0 0 1 -4 4 H262 Z"><title>Jul 2026 calibration: 7.0%</title></path>
+              <path class="bar hi" d="M262 156 H277 a4 4 0 0 1 4 4 V170 a4 4 0 0 1 -4 4 H262 Z"><title>Controls replaced: 1.19%</title></path>
+              <path class="bar hi" d="M262 184 H286.6 a4 4 0 0 1 4 4 V198 a4 4 0 0 1 -4 4 H262 Z"><title>Flow changes: 1.79%</title></path>
+              <path class="bar hi" d="M262 212 H267.5 a2.5 4 0 0 1 2.5 4 V226 a2.5 4 0 0 1 -2.5 4 H262 Z"><title>Full production: 0.47%</title></path>
+              <path class="bar hi" d="M262 240 H265 a2 4 0 0 1 2 4 V254 a2 4 0 0 1 -2 4 H262 Z"><title>Aug–Sep 2026: 0.31%</title></path>
+              <line class="limit" x1="278" x2="278" y1="118" y2="262"/>
+              <text class="limit-l" x="282" y="128">1% cement limit</text>
+              <line class="base" x1="262" x2="262" y1="18" y2="262"/>
+              <g class="val">
+                <text x="606" y="46">21.1%</text>
+                <text x="411" y="74">8.9%</text>
+                <text x="381" y="102">7.0%</text>
+                <text x="288" y="170">1.19%</text>
+                <text x="297" y="198">1.79%</text>
+                <text x="285" y="226">0.47%</text>
+                <text x="285" y="254">0.31%</text>
+              </g>
+            </svg>
+            <table class="sr-only"><caption>Mean cement error from recipe</caption><thead><tr><th>Plant and period</th><th>Mean cement error</th></tr></thead><tbody><tr><td>Earlier CBL2, Dec 2025 calibration</td><td>21.1%</td></tr><tr><td>Earlier CBL2, Mar–Apr 2026 calibration</td><td>8.9%</td></tr><tr><td>Earlier CBL2, Jul 2026 calibration</td><td>7.0%</td></tr><tr><td>UCBL2, controls replaced, Jun 3–5</td><td>1.19%</td></tr><tr><td>UCBL2, flow changes, Jun 8 – Jul 6</td><td>1.79%</td></tr><tr><td>UCBL2, full production, Jul 7–31</td><td>0.47%</td></tr><tr><td>UCBL2, Aug–Sep 2026</td><td>0.31%</td></tr></tbody></table>
+          </div>
+          <figcaption><b>Fig. 1.6</b> <span class="cap-txt">Mean cement error from recipe. Two sites: a comparison of records, not a side-by-side test.</span></figcaption>
+        </figure>
+
+        <div class="figs c4 after print-only">
+          <figure>
+            <div class="plate photo fit" style="--ar: 1 / 1; --pos: 45% 62%"><img width="1050" height="1400" src="img/ecr-install.webp" alt="An excavator lifting the cement auger into place while the crew and a forklift work beside the new plant at the customer's yard." loading="lazy"></div>
+            <figcaption><b>Fig. 1.7</b> March 19: setting the cement auger.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo fit" style="--ar: 1 / 1; --pos: 50% 45%"><img width="1050" height="1400" src="img/ecr-belt-before.webp" alt="Cement hardened in a band on the smooth load-conveyor belt at the head pulley." loading="lazy"></div>
+            <figcaption><b>Fig. 1.8</b> May 22: cement hardening on the smooth belt.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo fit" style="--ar: 1 / 1; --pos: 50% 45%"><img width="1050" height="1400" src="img/ecr-restrictor.webp" alt="Welded steel guides and an adjustable stop forming a flow restrictor on a bin gate." loading="lazy"></div>
+            <figcaption><b>Fig. 1.9</b> June 29: a flow restrictor on a bin gate.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo fit" style="--ar: 1 / 1; --pos: 45% 50%"><img width="1100" height="825" src="img/ecr-diverter.webp" alt="The cement diverter discharging onto the chevron load-conveyor belt." loading="lazy"></div>
+            <figcaption><b>Fig. 1.10</b> July 9: the cement diverter in service.</figcaption>
+          </figure>
+        </div>
+
+
+        <section class="subwork after tl" aria-labelledby="h-tl">
+          <h3 id="h-tl">Commissioning, change by change</h3>
+          <p class="tl-intro">Fifteen field changes, from shipment to full production. Select a date.</p>
+          <ul class="tl-legend" aria-label="Legend">
+            <li><span class="dot" aria-hidden="true"></span>Installation</li>
+            <li><span class="dot fail" aria-hidden="true"></span>Rejected trial</li>
+            <li><span class="dot fix" aria-hidden="true"></span>Field change</li>
+            <li><span class="dot prod" aria-hidden="true"></span>Production</li>
+          </ul>
+          <div class="tl-scroll">
+          <ol class="tl-list" aria-label="Commissioning milestones">
+            <li data-phase="install">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Mar 18</span><span class="tl-title">Shipped from Salem</span></button>
+              <p class="tl-body">The plant left the Salem shop on a flatbed for the customer’s yard in Portland.</p>
+              <div class="tl-li-imgs" hidden><img width="1100" height="825" src="img/tl-shipped.webp" alt="The plant’s bins and load conveyor strapped to a flatbed behind a red truck." loading="lazy"></div>
+            </li>
+            <li data-phase="install">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Mar 19–21</span><span class="tl-title">Installed and first run</span></button>
+              <p class="tl-body">Silo, cement auger, aggregate bins, load conveyor and control panel set in place, and an independent electrician made the 480-volt connection. On March 21 the first run, aggregates only, worked as designed.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/ecr-install.webp" alt="An excavator lifting the cement auger into place beside the new plant." loading="lazy"><img width="1400" height="1050" src="img/ecr-installed.webp" alt="The installed plant: cement silo, aggregate bins, auger and control panel under the shed." loading="lazy"></div>
+            </li>
+            <li data-phase="install">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Apr 30</span><span class="tl-title">First cement fill</span></button>
+              <p class="tl-body">The tanker put 20 tons of cement into the silo, and dust escaped while it filled. The baghouse and silo pressure relief were adjusted.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/tl-cement-fill.webp" alt="Crew at the silo while a cement tanker fills it." loading="lazy"></div>
+            </li>
+            <li data-phase="fail">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">May 11</span><span class="tl-title">First batch with cement: rejected</span></button>
+              <p class="tl-body">The batch came out dry and crumbly in the block form. The water adjustment didn’t work.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/tl-dry-batch.webp" alt="A dry, crumbly batch in a blue block form." loading="lazy"></div>
+            </li>
+            <li data-phase="fail">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">May 15 – Jun 2</span><span class="tl-title">Five more test batches: all rejected</span></button>
+              <p class="tl-body">On May 22 the belt inspection found cement hardening on the smooth load-conveyor belt at the head pulley.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/ecr-belt-before.webp" alt="Cement hardened in a band on the smooth load-conveyor belt." loading="lazy"></div>
+            </li>
+            <li data-phase="fix">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jun 3</span><span class="tl-title">Controls replaced; first successful batch</span></button>
+              <p class="tl-body">The original PLC wasn’t communicating with the cement bin. The software lead replaced it with an Arduino-based controller and programmed it, and the plant ran its first successful batch the same day.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/tl-old-panel.webp" alt="The original control panel and PLC." data-label="Before" loading="lazy"><img width="1050" height="1400" src="img/tl-new-panel.webp" alt="The same panel with the Arduino-based controller and relay boards." data-label="After" loading="lazy"></div>
+            </li>
+            <li data-phase="fix">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jun 8</span><span class="tl-title">Load cells steadied</span></button>
+              <p class="tl-body">The load cells overshot after shutdown. Replacing the communication kit stabilized the readings.</p>
+              <div class="tl-li-imgs" hidden><img width="1400" height="1050" src="img/ecr-screen.webp" alt="The operator screen showing live rock, sand and cement weights." loading="lazy"></div>
+            </li>
+            <li data-phase="prod">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jun 11</span><span class="tl-title">First acceptable production block</span></button>
+              <p class="tl-body">The first block from logged, accepted batches. Earlier hand-cast trial blocks weren’t usable and aren’t counted.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/tl-first-block.webp" alt="A finished block stamped ECR in its form." loading="lazy"></div>
+            </li>
+            <li data-phase="fix">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jun 26</span><span class="tl-title">Material lost at the transfer</span></button>
+              <p class="tl-body">Material overloaded the hopper-to-conveyor transfer and spilled. New skirt boards brought the spillage under control.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/tl-transfer-loss.webp" alt="Material spilled below the hopper-to-conveyor transfer." loading="lazy"></div>
+            </li>
+            <li data-phase="fix">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jun 29</span><span class="tl-title">Flow restrictors on the bin gates</span></button>
+              <p class="tl-body">Sand and rock had been running 5.8% and 6.8% over target. After the restrictors went in they fell to about 1.3% and 1.4%, and later held at about 0.7%.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/ecr-restrictor.webp" alt="Welded guides and an adjustable stop forming a flow restrictor on a bin gate." loading="lazy"></div>
+            </li>
+            <li data-phase="fix">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jun 30</span><span class="tl-title">Hopper belt raised</span></button>
+              <p class="tl-body">A welded bracket raised the hopper belt for clearance over the load conveyor, and a replacement load-conveyor belt was requested.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/tl-belt-raised.webp" alt="A welded bracket under the conveyor frame raising the hopper belt." loading="lazy"></div>
+            </li>
+            <li data-phase="fix">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jul 7</span><span class="tl-title">Chevron belt, higher discharge</span></button>
+              <p class="tl-body">A chevron belt replaced the smooth one where cement had hardened, and the discharge went from 120 to 150 in. so the customer’s 4-yard mixer could load.</p>
+              <div class="tl-li-imgs" hidden><img width="1100" height="1466" src="img/rolloff-truck.webp" alt="The customer’s 4-yard mixer on its hook-lift truck." loading="lazy"></div>
+            </li>
+            <li data-phase="fix" data-start>
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jul 9</span><span class="tl-title">Cement diverter and discharge gate</span></button>
+              <p class="tl-body">My cement diverter and air-cylinder discharge gate went into service. Every run from this date met all four tolerances.</p>
+              <div class="tl-li-imgs" hidden><img width="1100" height="825" src="img/ecr-diverter.webp" alt="The cement diverter discharging onto the chevron belt." loading="lazy"></div>
+            </li>
+            <li data-phase="fix">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jul 14</span><span class="tl-title">Vibrators, water and drive</span></button>
+              <p class="tl-body">Electric vibrators replaced the air vibrators to stop material bridging in the bins. The water pump and pipe went from 40 to 80 GPM, and the drive went from two belts to three after the belts overheated.</p>
+              <div class="tl-li-imgs" hidden><img width="787" height="1400" src="img/tl-vibrator.webp" alt="An electric vibrator mounted on a bin." data-label="Bin vibrator" loading="lazy"><img width="1100" height="825" src="img/tl-three-belt.webp" alt="The drive motor with its three-belt drive." data-label="Three-belt drive" loading="lazy"></div>
+            </li>
+            <li data-phase="fix">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jul 16</span><span class="tl-title">Dust, screen and connectivity</span></button>
+              <p class="tl-body">A rubber discharge chute cut the dust at the truck, the silo pressure relief was replaced, a brighter waterproof 10-in. screen replaced one operators couldn’t read outdoors, and the router was upgraded.</p>
+              <div class="tl-li-imgs" hidden><img width="1100" height="825" src="img/tl-chute.webp" alt="The load conveyor discharge with its rubber chute, and a forklift in the yard." loading="lazy"></div>
+            </li>
+            <li data-phase="prod">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Jul 31</span><span class="tl-title">All adjustments complete</span></button>
+              <p class="tl-body">Mechanical issues resolved and the user manual updated. By now the plant had delivered 69 accepted loads, 124.75 yd³, since June 3.</p>
+              <div class="tl-li-imgs" hidden><img width="1050" height="1400" src="img/tl-blocks-stacked.webp" alt="Finished blocks stacked in the yard." loading="lazy"></div>
+            </li>
+            <li data-phase="prod">
+              <button type="button" class="tl-hit"><span class="dot" aria-hidden="true"></span><span class="tl-date">Aug – Sep</span><span class="tl-title">Full production</span></button>
+              <p class="tl-body">All 144 accepted runs within tolerance, with 0.31% mean cement error. The controller stopped 18 more runs after missing-material warnings.</p>
+              <div class="tl-li-imgs" hidden><img width="787" height="1400" src="img/tl-production-pour.webp" alt="A production pour from the mixer truck into a block form." loading="lazy"></div>
+            </li>
+          </ol>
+          </div>
+          <div class="tl-stage" id="tl-stage" hidden aria-live="polite" data-group>
+            <div class="tl-media"></div>
+            <div class="tl-text">
+              <p class="when"></p>
+              <p class="tl-tag"></p>
+              <h4></h4>
+              <p class="tl-desc"></p>
+            </div>
+          </div>
+          <div class="tl-nav" hidden>
+            <button type="button" class="tl-prev">Previous</button>
+            <button type="button" class="tl-next">Next</button>
+            <span class="tl-count"></span>
+          </div>
+        </section>
+
+        <section class="subwork after pb" aria-labelledby="h-loading">
+          <h3 id="h-loading">Loading the 4-yard roll-off mixer</h3>
+          <div class="figs c3">
+            <figure>
+              <div class="plate photo fit" style="--ar: 3 / 4; --pos: 55% 58%"><img width="1050" height="1400" src="img/ecr-loading.webp" alt="Cecil in a white hard hat at the plant's control panel while the load conveyor fills the customer's mixer truck." loading="lazy"></div>
+              <figcaption><b>Fig. 1.11</b> At the panel, loading the 4-yard mixer.</figcaption>
+            </figure>
+            <figure>
+              <div class="plate photo fit" style="--ar: 3 / 4; --pos: 60% 50%"><img width="1100" height="1466" src="img/rolloff-truck.webp" alt="The white 4-yard mixer mounted on a hook-lift truck, seen from the rear with its ladder, loading hopper and discharge chute." loading="lazy"></div>
+              <figcaption><b>Fig. 1.12</b> The 4-yard mixer on its hook-lift truck.</figcaption>
+            </figure>
+            <figure>
+              <div class="plate photo fit" style="--ar: 3 / 4; --pos: 40% 50%"><img width="1100" height="1134" src="img/rolloff-frame.webp" alt="The 4-yard mixer set down on the ground on its roll-off frame, with the hook-lift truck's arm beside it." loading="lazy"></div>
+              <figcaption><b>Fig. 1.13</b> Set down on its roll-off frame.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="subwork after" aria-labelledby="h-again">
+          <h3 id="h-again">Built again from the same drawings</h3>
+          <div class="figs c3">
+            <figure>
+              <div class="plate photo fit" style="--ar: 4 / 3; --pos: 50% 55%"><img width="1600" height="1200" src="img/ship-plant-silo.webp" alt="A batch plant with its blue load conveyor, aggregate bins and a white Low-Pro cement silo on a red stand, strapped to a lowboy trailer for shipment." loading="lazy"></div>
+              <figcaption><b>Fig. 1.14</b> A plant and Low-Pro silo loaded for shipment.</figcaption>
+            </figure>
+            <figure>
+              <div class="plate photo fit" style="--ar: 4 / 3; --pos: 50% 55%"><img width="1100" height="1466" src="img/mt-installed.webp" alt="The second UCBL2 plant installed at a customer site in Montana, with its control panel open during installation." loading="lazy"></div>
+              <figcaption><b>Fig. 1.15</b> The second UCBL2, Montana, July 2026.</figcaption>
+            </figure>
+            <figure>
+              <div class="plate photo fit" style="--ar: 4 / 3; --pos: 50% 50%"><img width="1400" height="939" src="img/shop-two-plants.webp" alt="Two UCBL2 plant frames in production in the Cart-Away shop in Salem." loading="lazy"></div>
+              <figcaption><b>Fig. 1.16</b> Two more in production, October 2026.</figcaption>
+            </figure>
+          </div>
+        </section>
+      </article>
+
+      <!-- SHEET 2 -->
+      <article class="sheet project" id="next-gen" data-spy="Sheet 2 of 7: Modular plant and retrofit kit" data-nav="#work" aria-labelledby="h-nextgen">
+        <span class="sheet-tab">Sheet 2 of 7</span>
+        <h2 id="h-nextgen">A modular plant that grows with its owner, and a retrofit kit for plants in the field</h2>
+        <p class="summary">The first plant’s lessons went two ways: a next-generation plant that grows one bin at a time, and a kit that brings weighing to plants already working.</p>
+
+        <dl class="titleblock proj-tb">
+          <div><dt class="label">Period</dt><dd>Feb 2026 – present</dd></div>
+          <div><dt class="label">Company</dt><dd>Cart-Away Concrete Systems</dd></div>
+          <div><dt class="label">My role</dt><dd>Platform design, drawings, supplier selection, bench testing, installation</dd></div>
+          <div><dt class="label">Team</dt><dd>Software lead on controls; sales staff; outside fabricator and scale supplier</dd></div>
+          <div><dt class="label">Tools</dt><dd>SolidWorks weldments and cut lists, load cells</dd></div>
+        </dl>
+
+        <figure class="hero-fig">
+          <div class="plate photo" style="padding:0"><img width="1800" height="1012" src="img/r-cbl3-hero.webp" alt="Render of the three-bin CBL3 configuration of the modular plant on a site: three aggregate bin modules in a row, the weigh conveyor beneath, the control panel and an inclined load conveyor." style="width:100%"></div>
+          <figcaption><b>Fig. 2.1</b> The modular plant as a three-bin CBL3 (render).</figcaption>
+        </figure>
+
+        <div class="brief">
+          <div class="whw">
+            <div class="w-what"><h3>What</h3><p>A <b>modular batch plant</b> that starts as a one-bin CBL1 and grows to CBL2, CBL3 and beyond by adding bin modules, and a <b>load-cell retrofit kit</b> for the 400+ older plants still working.</p></div>
+            <div class="w-how"><h3>How</h3><ul><li>Traced recurring field failures to root causes with owners: timed metering, cement hardening in augers, spillage at the belt transfer.</li><li>Designed the modular platform and drew the next-gen CBL2: 96 sheets, released to a steel fabricator for quotation.</li><li>Specified 35° troughing idlers and a pneumatic clamshell gate to keep material on the belt.</li><li>Designed the retrofit kit around 10 load cells and bench-tested it for three weeks.</li></ul></div>
+            <div class="w-why"><h3>Why it matters</h3><p>Owners add capacity without replacing a plant, and upgrade the plant they already own instead of buying new. The kit proves itself on Cart-Away’s own test plant before it reaches a customer’s.</p></div>
+          </div>
+          <dl class="kpis"><div><dt class="num">96</dt><dd>drawing sheets for the next-gen CBL2, quoted Oct 2026</dd></div><div><dt class="num">Sold</dt><dd>the first beta next-gen CBL1, Sept 2026</dd></div><div><dt class="num">10</dt><dd>load cells per retrofit kit</dd></div><div><dt class="num">400+</dt><dd>older plants the kit can upgrade (company estimate)</dd></div></dl>
+          <details class="more-proj" id="next-gen-more">
+            <summary><span class="mo">More on this project</span><span class="less">Show less</span></summary>
+            <div class="more-body">
+              <div>
+                <h4>The problem</h4>
+                <p>More than 400 older Cart-Away plants are still working, by the company’s estimate. Studying them with their owners, from breakdown photos and on site, I traced the recurring failures to three root causes: timed metering with no weight to check against, cement hardening in augers where moisture gets in, and sand and gravel spilling at the belt transfer where flat rollers can’t cradle it.</p>
+                <h4>What I did</h4>
+                <ul><li><b>Modular platform.</b> The plant grows by adding aggregate-bin modules in line, from CBL1 to CBL2, CBL3 and beyond.</li><li><b>Next-gen CBL2 drawings.</b> Main frame, two-bin assembly, and load-conveyor base and frame, with weldment cut lists: 96 sheets between September 13 and October 7, 2026.</li><li><b>Belt transfer.</b> 35° troughing idlers with 20° transition idlers, and a pneumatic clamshell gate developed from the UCBL2’s.</li><li><b>Beta next-gen CBL1.</b> For this all-electric plant with touch-screen and remote control and scales on hopper and silo: the design changes, new drawing and customer sign-off document.</li><li><b>Retrofit kit.</b> Ten 20-tonne load cells for an earlier CBL2, six under its two-hopper frame and four under the silo, with a six-way junction box and wiring. Both hoppers share one frame, so the controller weighs one material, then the other, and subtracts.</li><li><b>Level check.</b> Compared hopper level sensors with a supplier, then chose a software check with the software lead: the batch pauses if the conveyor runs but the weight isn’t falling.</li></ul>
+              </div>
+              <div>
+                <h4>How I checked it</h4>
+                <p>I assembled the scales when they arrived on September 2, 2026 and bench-tested them for three weeks for behavior and stability. The first kit is now going onto Cart-Away’s own earlier CBL2. A retrofit goes onto a machine its owner depends on every day, so it reaches customers only after it has proven itself there. The owner of an existing CBL1 was quoted for the kit in September 2026.</p>
+                <p class="note">Sales and pricing by Cart-Away’s sales staff; controls software by the software lead.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+
+        
+        <div class="cfg screen-only" aria-labelledby="h-cfg">
+          <div class="cfg-view plate"><img src="img/cfg-cbl3-iso.webp" alt="Render of the CBL3 configuration, isometric view." width="1400" height="984"></div>
+          <div class="cfg-side">
+            <h3 id="h-cfg">Grow the plant</h3>
+            <div>
+              <p class="label ctl-label" id="cfg-n">Aggregate bins</p>
+              <div class="seg" role="group" aria-labelledby="cfg-n">
+                <button type="button" data-n="1" aria-pressed="false">CBL1<small>1 bin</small></button>
+                <button type="button" data-n="2" aria-pressed="false">CBL2<small>2 bins</small></button>
+                <button type="button" data-n="3" aria-pressed="true">CBL3<small>3 bins</small></button>
+              </div>
+            </div>
+            <div>
+              <p class="label ctl-label" id="cfg-v">View</p>
+              <div class="seg" role="group" aria-labelledby="cfg-v">
+                <button type="button" data-view="iso" aria-pressed="true">Isometric</button>
+                <button type="button" data-view="side" aria-pressed="false">Side</button>
+                <button type="button" data-view="top" aria-pressed="false">Top</button>
+              </div>
+            </div>
+            <svg class="cfg-schem" viewBox="0 0 390 132" role="img" aria-label="Schematic of the plant layout"></svg>
+            <p class="cfg-desc" aria-live="polite"></p>
+            <p class="label">Renders of my modular design. Schematic not to scale.</p>
+          </div>
+        </div>
+
+        <div class="figs c3 print-only">
+          <figure>
+            <div class="plate"><img width="1200" height="723" src="img/r-cbl1.webp" alt="Render of the one-bin CBL1 configuration: a single aggregate bin on a frame, cement hopper, control panel and load conveyor." loading="lazy"></div>
+            <figcaption><b>Fig. 2.2</b> CBL1: one aggregate bin.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1200" height="788" src="img/r-cbl2.webp" alt="Render of the two-bin CBL2 configuration, with a second aggregate bin module added in line." loading="lazy"></div>
+            <figcaption><b>Fig. 2.3</b> CBL2: a second bin module added.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1200" height="937" src="img/r-cbl3.webp" alt="Render of the three-bin CBL3 configuration, with three aggregate bin modules in line." loading="lazy"></div>
+            <figcaption><b>Fig. 2.4</b> CBL3: three bins, and so on as the owner grows.</figcaption>
+          </figure>
+        </div>
+
+        <div class="figs c4 after pb">
+          <figure>
+            <div class="plate"><img width="1295" height="1346" src="img/cbl2-frame.webp" alt="Shaded isometric drawing of the next-generation CBL2 main frame: square-tube legs and bracing carrying two bin bays, with numbered item balloons." loading="lazy"></div>
+            <figcaption><b>Fig. 2.5</b> CBL2 main frame, October 2026.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1600" height="860" src="img/cbl2-bins-x.webp" alt="Exploded drawing of the two-bin aggregate hopper assembly with side plates, lifting lugs and gate brackets." loading="lazy"></div>
+            <figcaption><b>Fig. 2.6</b> Two-bin assembly, exploded.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="920" height="972" src="img/conv-base-x.webp" alt="Exploded drawing of the load-conveyor base: channel frame, rotating plate, pivot mount and wear plates." loading="lazy"></div>
+            <figcaption><b>Fig. 2.7</b> Load-conveyor base: rotating plate, pivot, UHMW wear plates.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1028" height="1421" src="img/conv-frame-x.webp" alt="Drawing of the load-conveyor main frame with cover hoops, shown assembled and exploded." loading="lazy"></div>
+            <figcaption><b>Fig. 2.8</b> Load-conveyor frame, assembled and exploded.</figcaption>
+          </figure>
+        </div>
+
+        <section class="subwork after" aria-labelledby="h-field">
+          <h3 id="h-field">What earlier plants showed</h3>
+          <div class="figs c3">
+            <figure>
+              <div class="plate photo fit" style="--ar: 1 / 1; --pos: 40% 50%"><img width="1000" height="750" src="img/field-early-plant.webp" alt="An early short-load plant still in service, with a weathered cement silo, original control panel and inclined load conveyor." loading="lazy"></div>
+              <figcaption><b>Fig. 2.9</b> An early plant, still metering by gate and run time.</figcaption>
+            </figure>
+            <figure>
+              <div class="plate photo fit" style="--ar: 1 / 1; --pos: 50% 55%"><img width="1000" height="1333" src="img/field-auger.webp" alt="A cement auger in an open trough with its flights packed with hardened cement." loading="lazy"></div>
+              <figcaption><b>Fig. 2.10</b> Auger flights packed with hardened cement.</figcaption>
+            </figure>
+            <figure>
+              <div class="plate photo fit" style="--ar: 1 / 1; --pos: 50% 50%"><img width="640" height="480" src="img/field-transfer.webp" alt="Spilled aggregate and hardened cement at an auger discharge and belt transfer." loading="lazy"></div>
+              <figcaption><b>Fig. 2.11</b> Material lost at the belt transfer.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="subwork after" aria-labelledby="h-retro">
+          <h3 id="h-retro">First kit, on Cart-Away’s own test plant</h3>
+          <div class="figs c3">
+            <figure>
+              <div class="plate photo fit" style="--ar: 1 / 1; --pos: 46% 50%"><img width="1600" height="1200" src="img/ph-retro-plant.webp" alt="Cart-Away's own earlier batch plant with its aggregate hoppers, control box and inclined load conveyor, with the silo behind, now standing on load cells." loading="lazy"></div>
+              <figcaption><b>Fig. 2.12</b> Cart-Away’s own earlier CBL2: the test plant.</figcaption>
+            </figure>
+            <figure>
+              <div class="plate photo fit" style="--ar: 1 / 1; --pos: 50% 40%"><img width="1100" height="1466" src="img/ph-retro-silo.webp" alt="The cement silo on four braced legs, each standing on a load cell, with the auger running to the plant." loading="lazy"></div>
+              <figcaption><b>Fig. 2.13</b> The silo on four load cells.</figcaption>
+            </figure>
+            <figure>
+              <div class="plate photo fit" style="--ar: 1 / 1; --pos: 55% 50%"><img width="1400" height="1050" src="img/ph-retro-loadcell.webp" alt="Close-up of a stainless 20-tonne compression load cell and mounting kit installed under a silo leg, with fresh welds on the leg plate." loading="lazy"></div>
+              <figcaption><b>Fig. 2.14</b> A 20-tonne load cell under one silo leg.</figcaption>
+            </figure>
+          </div>
+        </section>
+      </article>
+
+      <!-- SHEET 3 -->
+      <article class="sheet project" id="mobile-silo" data-spy="Sheet 3 of 7: Mobile silo" data-nav="#work" aria-labelledby="h-silo">
+        <span class="sheet-tab">Sheet 3 of 7</span>
+        <h2 id="h-silo">Making a fixed 200-barrel cement silo towable</h2>
+        <p class="summary">Crews need cement where they batch. I made Cart-Away’s fixed 200-barrel silo road-towable; the first has worked in Reno, Nevada since May 2026.</p>
+
+        <dl class="titleblock proj-tb">
+          <div><dt class="label">Period</dt><dd>Nov 2025 – May 2026</dd></div>
+          <div><dt class="label">Company</dt><dd>Cart-Away Concrete Systems</dd></div>
+          <div><dt class="label">My role</dt><dd>Conversion design, weldment drawings, weld and final QC</dd></div>
+          <div><dt class="label">Team</dt><dd>Production team fabricated it</dd></div>
+          <div><dt class="label">Tools</dt><dd>SolidWorks weldments, exploded fabrication views</dd></div>
+        </dl>
+
+        <figure class="hero-fig">
+          <div class="plate photo" style="padding:0"><img width="1800" height="1350" src="img/silo-finished.webp" alt="The finished mobile Low-Pro cement silo, painted light grey, on its tandem-axle trailer frame with the baghouse at the front." style="width:100%"></div>
+          <figcaption><b>Fig. 3.1</b> The finished mobile silo, baghouse at the front.</figcaption>
+        </figure>
+
+        <div class="brief">
+          <div class="whw">
+            <div class="w-what"><h3>What</h3><p>Cart-Away’s <b>200-barrel (37-tonne) Low-Pro silo</b>, converted from a fixed installation to a towable unit with its own baghouse.</p></div>
+            <div class="w-how"><h3>How</h3><ul><li>Designed a new main-frame weldment on a 15,000 lb dual-wheel axle kit: tongue channels, gussets, fender plates, jack mount.</li><li>Integrated a baghouse to catch cement dust while the silo fills.</li><li>Inspected welds and alignment in fabrication and signed off final QC.</li></ul></div>
+            <div class="w-why"><h3>Why it matters</h3><p>Cement storage now moves with the plant to temporary and remote sites, instead of staying where the silo was set.</p></div>
+          </div>
+          <dl class="kpis"><div><dt class="num">37 t</dt><dd>of cement storage, now towable</dd></div><div><dt class="num">In service</dt><dd>Reno, Nevada, since May 2026</dd></div><div><dt class="num">Nov → May</dt><dd>first drawing to a unit in service</dd></div></dl>
+          <details class="more-proj" id="mobile-silo-more">
+            <summary><span class="mo">More on this project</span><span class="less">Show less</span></summary>
+            <div class="more-body">
+              <div>
+                <h4>The problem</h4>
+                <p>The 200-barrel Low-Pro silo was built for fixed installation, so cement storage stayed where the silo was set. Crews working temporary or remote sites need it to move with the plant.</p>
+                <h4>What I did</h4>
+                <ul><li><b>Frame.</b> A new main-frame weldment that carries the silo on the road: tongue channels, gussets, fender plates and a jack mount, on a 15,000 lb dual-wheel axle kit.</li><li><b>Dust.</b> An integrated baghouse that captures cement dust during filling.</li><li><b>Drawings.</b> Drew the conversion in November 2025 and revised it in December.</li></ul>
+              </div>
+              <div>
+                <h4>How I checked it</h4>
+                <p>I inspected welds and alignment during fabrication and signed off final QC before it shipped. The first unit went to a Reno customer together with a batch plant and eight mixing trailers.</p>
+                <p class="note">Drawings are shown with title blocks, part numbers and bills of materials removed.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+
+        <div class="figs c3">
+          <figure>
+            <div class="plate photo fit" style="--ar: 3 / 4; --pos: 45% 60%"><img width="1100" height="1466" src="img/silo-fab-1.webp" alt="An open section of the silo shell in the shop, with its sloped bottom, vertical stiffeners and cross tubes." loading="lazy"></div>
+            <figcaption><b>Fig. 3.2</b> In fabrication: a shell section and its stiffeners.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo fit" style="--ar: 3 / 4; --pos: 50% 50%"><img width="1100" height="1466" src="img/silo-fab-2.webp" alt="The closed silo shell lying on its side on the shop floor, with lifting lugs at each end." loading="lazy"></div>
+            <figcaption><b>Fig. 3.3</b> The shell closed and on its side for welding.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo fit" style="--ar: 3 / 4; --pos: 40% 50%"><img width="1100" height="1768" src="img/silo-fab-3.webp" alt="The silo shell with two pipes and lifting lugs welded on, in the shop." loading="lazy"></div>
+            <figcaption><b>Fig. 3.4</b> Pipes and lifting lugs welded on.</figcaption>
+          </figure>
+        </div>
+      
+<div class="figs c3 after">
+          <figure>
+            <div class="plate"><img width="895" height="730" src="img/ca-silo-iso.webp" alt="Shaded isometric of the 200-barrel mobile silo on a tandem-axle trailer frame with bag-house enclosure." loading="lazy"></div>
+            <figcaption><b>Fig. 3.5</b> General arrangement.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="811" height="635" src="img/ca-silo-frame.webp" alt="Shaded render of the welded main frame that carries the silo, with braced uprights, tongue and leg stands." loading="lazy"></div>
+            <figcaption><b>Fig. 3.6</b> The main-frame weldment that makes it towable.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1185" height="1403" src="img/ca-silo-frame-x.webp" alt="Exploded line drawing of the silo frame weldment showing tongue channels, gussets, fender plates and jack mount with item balloons." loading="lazy"></div>
+            <figcaption><b>Fig. 3.7</b> The frame exploded for fabrication.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- SHEET 4 -->
+      <article class="sheet project" id="navy-mixer" data-spy="Sheet 4 of 7: Navy mixer" data-nav="#work" aria-labelledby="h-navy">
+        <span class="sheet-tab">Sheet 4 of 7</span>
+        <h2 id="h-navy">Documenting an off-grid concrete mixer for U.S. Navy field evaluation</h2>
+        <p class="summary">One of my major Cart-Away projects: I configured, documented and QC’d an off-grid mixer for Navy field evaluation, then wrote the manuals and training for its crews.</p>
+
+        <dl class="titleblock proj-tb">
+          <div><dt class="label">Period</dt><dd>Jul 2025 – present</dd></div>
+          <div><dt class="label">Company</dt><dd>Cart-Away Concrete Systems</dd></div>
+          <div><dt class="label">My role</dt><dd>Navy configuration drawings, global BOM, QC, manuals, training material</dd></div>
+          <div><dt class="label">Team</dt><dd>Production built it; account lead handled Navy correspondence</dd></div>
+          <div><dt class="label">Tools</dt><dd>SolidWorks assemblies and drawings, hydraulic and electrical schematics</dd></div>
+        </dl>
+
+        <figure class="hero-fig">
+          <div class="plate photo" style="padding:0"><img width="1600" height="1200" src="img/ph-navy-side.webp" alt="The finished off-grid concrete mixer in olive drab on a tandem-axle trailer in the Cart-Away shop, showing the mixing drum, safety cage, control panel and top-loader conveyor." style="width:100%"></div>
+          <figcaption><b>Fig. 4.1</b> After shop QC, ready for field evaluation. Serial numbers blurred.</figcaption>
+        </figure>
+
+        <div class="brief">
+          <div class="whw">
+            <div class="w-what"><h3>What</h3><p>A <b>Navy-specific configuration</b> of Cart-Away’s trailer-mounted, off-grid concrete mixer, for remote sites and crews far from the factory.</p></div>
+            <div class="w-how"><h3>How</h3><ul><li>Drew the Navy configuration from general arrangement down to parts.</li><li>Built the global BOM and a seven-section parts book with exploded views.</li><li>Ran QC against the drawing package before release.</li><li>Wrote the owner’s manual and training material for the Navy’s New Equipment Training.</li></ul></div>
+            <div class="w-why"><h3>Why it matters</h3><p>After field testing, the Navy requires 60+ units: more than $2M in follow-on revenue for Cart-Away. And in the field the book is the support, so every part must be identifiable and orderable from it alone.</p></div>
+          </div>
+          <dl class="kpis"><div><dt class="num">60+</dt><dd>units the Navy requires after field testing</dd></div><div><dt class="num">$2M+</dt><dd>follow-on revenue</dd></div><div><dt class="num">1</dt><dd>test unit shipped for field evaluation</dd></div><div><dt class="num">7</dt><dd>parts-book sections with exploded views</dd></div><div><dt class="num">3</dt><dd>training documents for Navy operators</dd></div></dl>
+          <details class="more-proj" id="navy-mixer-more">
+            <summary><span class="mo">More on this project</span><span class="less">Show less</span></summary>
+            <div class="more-body">
+              <div>
+                <h4>The problem</h4>
+                <p>A mixer that deploys to remote sites has to run without grid power and be maintained by crews far from the factory. Cart-Away has supplied small-batch mixers to Navy field units for years; this unit is built on its existing off-grid mixer line.</p>
+                <h4>What I did</h4>
+                <ul><li><b>Drawings.</b> The Navy-specific configuration, from general arrangement through frame and add-on assemblies to individual parts. The first drawing is dated July 28, 2025 and was approved August 15.</li><li><b>Parts book.</b> A global bill of materials and seven sections: main mixer, lighting, bag breaker, safety cages, discharge, removable trailer, and hydraulic and electrical schematics.</li><li><b>Build and QC.</b> Coordinated manufacturing and ran the quality-control review before the unit shipped for field testing.</li><li><b>Training.</b> When the Navy’s NAVFAC training agency asked for New Equipment Training, wrote the owner’s manual, parts book and training presentations. I will lead the training once the Navy sets dates.</li><li><b>Follow-on.</b> After field testing, the Navy requires 60+ units, more than $2M in follow-on revenue for Cart-Away.</li></ul>
+              </div>
+              <div>
+                <h4>How I checked it</h4>
+                <p>I reviewed the finished unit against the drawing package before release. After delivery, a Navy representative asked about a sensor that wasn’t listed in the manual; I traced it through Cart-Away’s part records and sent back its part number and specification.</p>
+                <p class="note">Shown with title blocks, part numbers and bills of materials removed.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+
+        <div class="figs c3 navy-a">
+          <figure>
+            <div class="plate photo fit" style="--ar: 3 / 4; --pos: 50% 45%"><img width="1100" height="1466" src="img/ph-navy-rear.webp" alt="Rear view of the finished mixer: drum opening, top-loader hopper with work light, drum-tilt hydraulic cylinder and rear bumper." loading="lazy"></div>
+            <figcaption><b>Fig. 4.2</b> Rear: drum, loader hopper and tilt cylinder.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1278" height="1478" src="img/navy-frame-x.webp" alt="Exploded drawing of the mixer frame and add-ons: safety cage panels, bag-breaker mounts, chute storage and trailer frame." loading="lazy"></div>
+            <figcaption><b>Fig. 4.3</b> Frame and add-ons, exploded.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1113" height="1384" src="img/navy-valves-x.webp" alt="Exploded drawing of the rear of the control panel showing the hydraulic valve bank, flow controls and hose routing." loading="lazy"></div>
+            <figcaption><b>Fig. 4.4</b> Control panel rear: hydraulic valve bank.</figcaption>
+          </figure>
+        </div>
+        <div class="figs c3 navy-b">
+          <figure>
+            <div class="plate"><img width="1800" height="1048" src="img/navy-overview.webp" alt="Line drawing of the trailer-mounted mixer with callouts for the parts book sections: main concrete mixer, lighting option, bag breaker option, safety cages, discharge option, removable trailer option and hydraulics and electrical schematics." loading="lazy"></div>
+            <figcaption><b>Fig. 4.5</b> Parts-book overview; each callout opens a section.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1600" height="1202" src="img/navy-conveyor-x.webp" alt="Exploded drawing of the top-loader conveyor assembly with side panels, belt, rollers, bearings and hydraulic motor mount." loading="lazy"></div>
+            <figcaption><b>Fig. 4.6</b> Top-loader conveyor.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="1282" height="1122" src="img/navy-drive-x.webp" alt="Exploded drawing of the drive train: hydraulic motor, gearbox and welded mount with fasteners." loading="lazy"></div>
+            <figcaption><b>Fig. 4.7</b> Drive train: hydraulic motor, gearbox and mount.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- SHEET 5 -->
+      <article class="sheet project" id="uav" data-spy="Sheet 5 of 7: VTOL drone" data-nav="#work" aria-labelledby="h-uav">
+        <span class="sheet-tab">Sheet 5 of 7</span>
+        <h2 id="h-uav">A fixed-wing VTOL drone to fly medical supplies in rural Zimbabwe</h2>
+        <p class="summary">I took FlighTech’s medical-delivery concept to a flying prototype: airframe, airfoil, structure and build.</p>
+
+        <dl class="titleblock proj-tb">
+          <div><dt class="label">Period</dt><dd>2021 – Jul 2023</dd></div>
+          <div><dt class="label">Company</dt><dd>FlighTech, a UAV startup in Zimbabwe</dd></div>
+          <div><dt class="label">My role</dt><dd>Intern, then lead mechanical engineer (Jun 2022 – Jul 2023)</dd></div>
+          <div><dt class="label">Team</dt><dd>Co-founder led electrical; I led mechanical</dd></div>
+          <div><dt class="label">Tools</dt><dd>CAD, airfoil polars, FEA, CNC, FDM printing, GD&amp;T</dd></div>
+        </dl>
+
+        <figure class="hero-fig vid-fig">
+          <div class="plate photo vid screen-only"><video src="img/uav-flight.mp4" poster="img/vid-uav-poster.webp" width="848" height="448" controls muted loop playsinline preload="metadata" aria-label="Flight-test video of the VTOL prototype: vertical takeoff, transition to forward flight, circuits, hover descent and vertical landing."></video></div>
+          <ol class="vchap" aria-label="Flight phases">
+            <li><button type="button" data-t="2"><img src="img/vid-uav-takeoff.webp" alt="" width="480" height="253" loading="lazy"><span class="vt">0:02</span><b>Vertical takeoff</b></button></li>
+            <li><button type="button" data-t="15"><img src="img/vid-uav-transition.webp" alt="" width="480" height="253" loading="lazy"><span class="vt">0:15</span><b>Transition</b></button></li>
+            <li><button type="button" data-t="24"><img src="img/vid-uav-cruise.webp" alt="" width="480" height="253" loading="lazy"><span class="vt">0:24</span><b>Forward flight</b></button></li>
+            <li><button type="button" data-t="54"><img src="img/vid-uav-descent.webp" alt="" width="480" height="253" loading="lazy"><span class="vt">0:54</span><b>Hover descent</b></button></li>
+            <li><button type="button" data-t="64"><img src="img/vid-uav-landing.webp" alt="" width="480" height="253" loading="lazy"><span class="vt">1:04</span><b>Vertical landing</b></button></li>
+          </ol>
+          <figcaption><b>Fig. 5.1</b> Flight test, one full cycle: vertical takeoff, transition to wing-borne flight, circuits, hover descent and vertical landing.<span class="screen-only"> Select a phase to jump to it.</span><span class="print-only"> Frames from the flight-test video on the portfolio website.</span></figcaption>
+        </figure>
+
+        <div class="brief">
+          <div class="whw">
+            <div class="w-what"><h3>What</h3><p>A <b>fixed-wing VTOL drone</b> that carries medical supplies long distances and lands at rough sites with no runway, built from materials and machines available locally.</p></div>
+            <div class="w-how"><h3>How</h3><ul><li>Defined the airframe: tapered high wing, 2.60 m span, rotor booms for vertical takeoff.</li><li>Chose the NACA 4412 over two alternatives for lift-to-drag and a gentle stall.</li><li>Designed a hybrid structure: CNC carbon-fiber fuselage, printed airfoil sections, foam-filled wing.</li><li>Checked the wing in FEA (safety factor 1.47), then proved the full VTOL cycle in flight.</li></ul></div>
+            <div class="w-why"><h3>Why it matters</h3><p>It reaches communities that roads serve poorly, with no runway needed. The project won a ≈$50K award from POTRAZ, Zimbabwe’s telecoms regulator.</p></div>
+          </div>
+          <dl class="kpis"><div><dt class="num">1.47</dt><dd>wing safety factor in FEA</dd></div><div><dt class="num">≈$50K</dt><dd>POTRAZ award (US-dollar equivalent)</dd></div><div><dt class="num">18%</dt><dd>lower prototyping cost</dd></div><div><dt class="num">2</dt><dd>public showcases</dd></div></dl>
+          <details class="more-proj" id="uav-more">
+            <summary><span class="mo">More on this project</span><span class="less">Show less</span></summary>
+            <div class="more-body">
+              <div>
+                <h4>The problem</h4>
+                <p>The aircraft had to carry a payload over long distances, take off and land at rough sites with no runway, and be buildable with the materials and machines available locally.</p>
+                <h4>What I did</h4>
+                <ul><li><b>Airframe.</b> A high-wing monoplane with a tapered wing (taper ratio 0.67), 2.60 m span and aspect ratio 10.4, plus rotor booms for vertical takeoff and landing.</li><li><b>Airfoil.</b> Compared the NACA 23015, 23012 and 4412 at the design Reynolds number of about 390,000, and chose the 4412 for its lift-to-drag ratio and gentle stall.</li><li><b>Structure.</b> CNC-machined carbon-fiber plate for the fuselage, 3D-printed airfoil sections, aluminum at the wing root and XPS foam filling the wing, to balance weight, strength and what we could make.</li><li><b>Build.</b> Led prototype manufacturing and assembly, and cut prototyping cost by 18%.</li></ul>
+              </div>
+              <div>
+                <h4>How I checked it</h4>
+                <p>FEA on the wing under flight loads gave a peak von Mises stress of 187 MPa against a 276 MPa yield strength, a safety factor of 1.47. Flight tests then checked stability and endurance through the full cycle: vertical takeoff, transition to wing-borne flight, circuits, hover descent and vertical landing. The prototype was shown at the Zimbabwe Agricultural Show and demonstrated for a Ministry of Health official.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+
+        <div class="figs c4">
+          <figure>
+            <div class="plate"><img width="700" height="450" src="img/ft-cad.webp" alt="Four CAD views of the UAV: complete aircraft, fuselage skeleton with tail boom, and two isometric views." loading="lazy"></div>
+            <figcaption><b>Fig. 5.2</b> Airframe CAD and fuselage skeleton.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="916" height="450" src="img/ft-airfoil.webp" alt="Two plots comparing candidate airfoils: lift coefficient against drag coefficient, and lift coefficient against angle of attack." loading="lazy"></div>
+            <figcaption><b>Fig. 5.3</b> Lift and drag polars used to choose the airfoil.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="896" height="483" src="img/ft-fea.webp" alt="FEA plot of the wing spar showing von Mises stress with a peak of 187 MPa." loading="lazy"></div>
+            <figcaption><b>Fig. 5.4</b> Wing FEA, von Mises stress in MPa.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo"><img width="810" height="1080" src="img/ft-prototype.webp" alt="The assembled white VTOL prototype on the ground with four lift rotors on wing booms." loading="lazy"></div>
+            <figcaption><b>Fig. 5.5</b> The assembled prototype.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- SHEET 6 -->
+      <article class="sheet project" id="wave-energy" data-spy="Sheet 6 of 7: Wave energy converter" data-nav="#work" aria-labelledby="h-wec">
+        <span class="sheet-tab">Sheet 6 of 7</span>
+        <h2 id="h-wec">Quadrupling a wave energy converter’s peak power through three prototypes</h2>
+        <p class="summary">For my Berkeley M.Eng capstone I led manufacturing on an inflatable wave energy converter, rebuilding it around what each pool test showed.</p>
+
+        <dl class="titleblock proj-tb">
+          <div><dt class="label">Period</dt><dd>Sep 2024 – May 2025</dd></div>
+          <div><dt class="label">Organization</dt><dd>TAFLab, UC Berkeley; advisor Prof. M. Reza Alam</dd></div>
+          <div><dt class="label">My role</dt><dd>Manufacturing lead: design, fabrication, testing</dd></div>
+          <div><dt class="label">Team</dt><dd>M.Eng capstone team</dd></div>
+          <div><dt class="label">Tools</dt><dd>Rapid prototyping, 3D printing, power electronics, pool testing</dd></div>
+        </dl>
+
+        <figure class="hero-fig">
+          <div class="plate chart" style="background:var(--sheet)">
+            <svg viewBox="0 0 600 310" role="img" aria-labelledby="wec-chart-title">
+              <title id="wec-chart-title">Peak power by prototype: 1.68 W, 2.4 W and 9.7 W</title>
+              <g class="grid">
+                <line x1="54" x2="590" y1="244" y2="244"/>
+                <line x1="54" x2="590" y1="190" y2="190"/>
+                <line x1="54" x2="590" y1="136" y2="136"/>
+                <line x1="54" x2="590" y1="82" y2="82"/>
+                <line x1="54" x2="590" y1="28" y2="28"/>
+              </g>
+              <g class="axis" text-anchor="end">
+                <text x="46" y="248">0</text>
+                <text x="46" y="194">2.5</text>
+                <text x="46" y="140">5</text>
+                <text x="46" y="86">7.5</text>
+                <text x="46" y="32">10 W</text>
+              </g>
+              <!-- bars: plot height 216 px for 10 W -->
+              <path class="bar" d="M 113 244 V 211.7 a 4 4 0 0 1 4 -4 H 173 a 4 4 0 0 1 4 4 V 244 Z"><title>Prototype 1: 1.68 W peak</title></path>
+              <path class="bar" d="M 291 244 V 196.2 a 4 4 0 0 1 4 -4 H 351 a 4 4 0 0 1 4 4 V 244 Z"><title>Prototype 2: 2.4 W peak</title></path>
+              <path class="bar hi" d="M 469 244 V 34.5 a 4 4 0 0 1 4 -4 H 529 a 4 4 0 0 1 4 4 V 244 Z"><title>Prototype 3: 9.7 W peak</title></path>
+              <line class="base" x1="54" x2="590" y1="244" y2="244"/>
+              <g text-anchor="middle">
+                <text class="val" x="145" y="199">1.68 W</text>
+                <text class="val" x="323" y="183">2.4 W</text>
+                <text class="val" x="501" y="22">9.7 W</text>
+              </g>
+              <g class="xl" text-anchor="middle">
+                <text class="p" x="145" y="266">Prototype 1</text><text x="145" y="283">ring buoy</text>
+                <text class="p" x="323" y="266">Prototype 2</text><text x="323" y="283">triangular platform</text>
+                <text class="p" x="501" y="266">Prototype 3</text><text x="501" y="283">elevated platform</text>
+              </g>
+            </svg>
+            <table class="sr-only"><caption>Peak power by prototype</caption><thead><tr><th>Prototype</th><th>Peak power (W)</th></tr></thead><tbody><tr><td>1, ring buoy</td><td>1.68</td></tr><tr><td>2, triangular platform</td><td>2.4</td></tr><tr><td>3, elevated platform</td><td>9.7</td></tr></tbody></table>
+          </div>
+          <figcaption><b>Fig. 6.1</b> Peak power in pool tests. Prototypes 2 and 3 compared at the same wave height.</figcaption>
+        </figure>
+
+        <div class="brief">
+          <div class="whw">
+            <div class="w-what"><h3>What</h3><p>An <b>inflatable point absorber</b> with fewer moving parts, aimed at wave power for under $0.20 per kWh.</p></div>
+            <div class="w-how"><h3>How</h3><ul><li>Built each prototype’s power take-off and its power electronics.</li><li>Engineered a printed motor-ring extension that let the generator turn in small waves.</li><li>Pool-tested every design the same way, so each change was judged against the last.</li></ul></div>
+            <div class="w-why"><h3>Why it matters</h3><p>Waves are two to three times more consistent than wind or solar, but converters stay costly. Three iterations raised peak power 4× and cut projected cost from $0.91 to $0.20 per kWh.</p></div>
+          </div>
+          <dl class="kpis"><div><dt class="num">4×</dt><dd>peak power, 2.4 → 9.7 W at the same wave height</dd></div><div><dt class="num">$0.20</dt><dd>projected cost per kWh, from $0.91</dd></div><div><dt class="num">3</dt><dd>prototypes built and pool-tested</dd></div></dl>
+          <p class="note">Performance results are the team’s; my part was fabrication, iteration and the power take-off fix.</p>
+          <details class="more-proj" id="wave-energy-more">
+            <summary><span class="mo">More on this project</span><span class="less">Show less</span></summary>
+            <div class="more-body">
+              <div>
+                <h4>The problem</h4>
+                <p>Wave energy converters stay expensive and hard to keep alive in rough seas. The team set out to show that an inflatable buoy with fewer moving parts could capture useful power at lower cost, working toward a levelized cost of energy under $0.20/kWh.</p>
+                <h4>What I did</h4>
+                <p>I led the build of each prototype’s power take-off, where the mooring line drives a spring-loaded coupler and generator inside a printed shell, and its power electronics: a full-bridge rectifier, a capacitor bank, and regulated 12 V and 5 V outputs. Then we iterated on the buoy:</p><ol><li><b>Ring buoy.</b> Tests in two pools exposed boundary effects in the small pool and motor dry torque holding back rotation. Output rose 36% in the larger pool, to 1.68 W.</li><li><b>Triangular platform on three inflatables.</b> My printed motor-ring extension cut rotational resistance so the generator could turn in small waves, but the body rocked instead of following the wave: 2.4 W peak.</li><li><b>Inflatable buoy with an elevated platform.</b> It followed the wave profile and converted motion far better: 9.7 W peak.</li></ol>
+              </div>
+              <div>
+                <h4>How I checked it</h4>
+                <p>Every prototype went through the same pool test with measured electrical output, so each design change was judged against the last one rather than against a model. The team named three losses for the next stage: dry torque, weak buoy response and no resonance tuning. I presented the poster and took my M.Eng comprehensive examination on the project in May 2025.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+
+        <div class="figs c3">
+          <figure>
+            <div class="plate photo"><img width="609" height="523" src="img/wec-p1.webp" alt="Prototype 1: generator and counterweight on a rainbow ring buoy floating in an inflatable pool, with labels." loading="lazy"></div>
+            <figcaption><b>Fig. 6.2</b> Prototype 1 in the test pool.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo"><img width="762" height="765" src="img/wec-p2.webp" alt="Prototype 2: generator and counterweight on a foam platform over an inflatable, labelled, floating in a pool." loading="lazy"></div>
+            <figcaption><b>Fig. 6.3</b> Prototype 2: platform and power take-off.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="900" height="1350" src="img/wec-platform.webp" alt="Side and top view diagrams of the triangular platform supported by three inflatables, moored to the sea bed." loading="lazy"></div>
+            <figcaption><b>Fig. 6.4</b> Platform concept, side and top views.</figcaption>
+          </figure>
+        </div>
+      </article>
+
+      <!-- SHEET 7 -->
+      <article class="sheet project" id="sprayer" data-spy="Sheet 7 of 7: Crop sprayer" data-nav="#work" aria-labelledby="h-sprayer">
+        <span class="sheet-tab">Sheet 7 of 7</span>
+        <h2 id="h-sprayer">A wheel-driven crop sprayer that takes the load off smallholder farmers</h2>
+        <p class="summary">Backpack sprayers put 20 litres on a farmer’s back. My capstone moved the tank onto a push frame whose wheel drives the pump. Published at IEEE GHTC 2022.</p>
+
+        <dl class="titleblock proj-tb">
+          <div><dt class="label">Period</dt><dd>Aug 2021 – May 2022</dd></div>
+          <div><dt class="label">Organization</dt><dd>Ashesi University, Ghana; advisor Dr. Heather Beem</dd></div>
+          <div><dt class="label">My role</dt><dd>Lead engineer: research, design, analysis, fabrication, testing</dd></div>
+          <div><dt class="label">Team</dt><dd>Individual capstone, workshop support</dd></div>
+          <div><dt class="label">Tools</dt><dd>SolidWorks, FEA, tube bending, welding, field trials</dd></div>
+        </dl>
+
+        <div class="figs c2" style="margin-top:26px">
+          <figure>
+            <div class="plate"><img width="414" height="235" src="img/sp-cad.webp" alt="SolidWorks render of the single-wheel sprayer frame carrying a green tank, with a nozzle bar." loading="lazy"></div>
+            <figcaption><b>Fig. 7.1</b> SolidWorks model.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate photo"><img width="433" height="269" src="img/sp-proto.webp" alt="The fabricated red steel sprayer frame with two backpack tanks, wheel, chain drive and nozzle bar." loading="lazy"></div>
+            <figcaption><b>Fig. 7.2</b> Fabricated prototype.</figcaption>
+          </figure>
+        </div>
+
+        <div class="brief">
+          <div class="whw">
+            <div class="w-what"><h3>What</h3><p>A <b>push-frame sprayer</b> whose wheel drives the pump, specified with nine tobacco farmers in Zimbabwe: under half the effort, automatic pumping, a 50 L tank, under $200.</p></div>
+            <div class="w-how"><h3>How</h3><ul><li>Scored four concepts in a Pugh chart; a single wheel with a standard tank won.</li><li>Sized a steel tube frame for 50 kg and an 18:32 chain drive that pumps 30 strokes a minute at walking pace.</li><li>Checked the frame and pins with FEA, safety-factor and fatigue calculations, then built it.</li><li>Ran 29 flow trials and 13 push-force trials on three surfaces.</li></ul></div>
+            <div class="w-why"><h3>Why it matters</h3><p>Farmers push about a third of the load instead of carrying all of it, for $55 in materials against their $200 ceiling.</p></div>
+          </div>
+          <dl class="kpis"><div><dt class="num">1.2 L/min</dt><dd>flow, within 3.5% of prediction</dd></div><div><dt class="num">32%</dt><dd>of the load as push effort</dd></div><div><dt class="num">40%</dt><dd>of the load to lift the frame</dd></div><div><dt class="num">$55</dt><dd>in materials</dd></div></dl>
+          <p class="note">Mashongedza &amp; Beem, “Design and Testing of a Low-Cost Wheel-Driven Crop Sprayer,” IEEE GHTC 2022. <a href="https://doi.org/10.1109/GHTC55712.2022.9910607">doi.org/10.1109/GHTC55712.2022.9910607</a></p>
+          <details class="more-proj" id="sprayer-more">
+            <summary><span class="mo">More on this project</span><span class="less">Show less</span></summary>
+            <div class="more-body">
+              <div>
+                <h4>The problem</h4>
+                <p>Interviews with nine tobacco farmers in Marondera, Zimbabwe set the brief: a push effort under half the load, automatic pumping, a 50-litre tank, adjustable nozzles, and a price under $200, the most they said they would spend.</p>
+                <h4>What I did</h4>
+                <ul><li><b>Concepts.</b> Sketched four and scored them on cost, tank size, effort, fabricability and durability. A single wheel with a standard tank won, because the better-performing irregular tank wasn’t available in Ghana.</li><li><b>Sizing.</b> A 13.7 mm OD 1020 steel tube frame for a 50 kg load, and an 18:32-tooth chain drive that rocks the pump lever at 30 strokes per minute at walking pace.</li><li><b>Analysis.</b> FEA on the frame, a safety-factor check on the sprocket pin, and a fatigue-life check on the driving pin.</li><li><b>Build.</b> Bent and welded the frame and fitted the drive in the university workshop.</li></ul>
+              </div>
+              <div>
+                <h4>How I checked it</h4>
+                <p>29 timed flow trials over a 75 m course, 13 push-force trials on rammed mud, loose sand and lawn, and a lift-force test with a 50 kg load, each compared with my hand calculations. Flow was 1.2 L/min at 1.45 m/s walking pace, within 3.5% of prediction (R² = 0.98), and push effort stayed under the 250 N limit even on loose sand.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+
+        <div class="figs c3">
+          <figure>
+            <div class="plate"><img width="624" height="374" src="img/sp-concepts.webp" alt="Four sketched concepts: single wheel with regular tank, single wheel with irregular tank, two tanks either side of the wheel, and a two-wheel cart." loading="lazy"></div>
+            <figcaption><b>Fig. 7.3</b> Four concepts, scored in a Pugh chart.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="731" height="338" src="img/sp-flow.webp" alt="Flow-rate test setup with collecting bottles and a scatter plot of flow rate against walking speed with a linear fit, R squared 0.976." loading="lazy"></div>
+            <figcaption><b>Fig. 7.4</b> Flow trials against walking speed.</figcaption>
+          </figure>
+          <figure>
+            <div class="plate"><img width="693" height="332" src="img/sp-push.webp" alt="Push and lift force test setups with a bar chart of push effort on lawn, mud and loose sand against the 250 N limit." loading="lazy"></div>
+            <figcaption><b>Fig. 7.5</b> Push and lift effort tests.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="equipment" data-spy="Equipment I QC’d" data-nav="#equipment">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Built in Salem, checked before it shipped</h2>
+        <p>More than 50 units QC’d before shipping, zero warranty claims. Filter by type; select a photo to enlarge.</p>
+      </div>
+      <div class="gal-ctl screen-only">
+        <div class="seg" role="group" aria-label="Filter equipment by type">
+          <button type="button" data-f="all" aria-pressed="true">All</button>
+          <button type="button" data-f="trailers" aria-pressed="false">Mixing trailers</button>
+          <button type="button" data-f="mixers" aria-pressed="false">Mixers</button>
+          <button type="button" data-f="plants" aria-pressed="false">Plants and loaders</button>
+          <button type="button" data-f="silos" aria-pressed="false">Silos</button>
+        </div>
+      </div>
+      <div class="gal" data-group>
+          <figure data-cat="trailers">
+            <div class="plate"><img width="1800" height="1350" src="img/qc-trailers-row.webp" alt="Four red-and-grey concrete mixing trailers parked in a row outside the shop, tongues forward." loading="lazy"></div>
+            <figcaption><span class="tag">Mixing trailers</span>Four mixing trailers, finished, outside the shop.</figcaption>
+          </figure>
+          <figure data-cat="trailers">
+            <div class="plate"><img width="1200" height="1600" src="img/qc-trailers-side.webp" alt="Two mixing trailers with grey drums, red frames and black drum covers." loading="lazy"></div>
+            <figcaption><span class="tag">Mixing trailers</span>Drum covers fitted, ready to ship.</figcaption>
+          </figure>
+          <figure data-cat="trailers">
+            <div class="plate"><img width="1200" height="1600" src="img/qc-chassis-2.webp" alt="A red trailer chassis in the shop with the drum drive mount, a Honda engine and hydraulic hoses." loading="lazy"></div>
+            <figcaption><span class="tag">Mixing trailers</span>Chassis before the drum: drive mount, engine, hydraulics.</figcaption>
+          </figure>
+          <figure data-cat="trailers">
+            <div class="plate"><img width="1200" height="1600" src="img/qc-chassis-1.webp" alt="The trailer chassis seen from the tongue, with surge coupler, safety chains and jack." loading="lazy"></div>
+            <figcaption><span class="tag">Mixing trailers</span>Same chassis from the tongue: coupler, chains, jack.</figcaption>
+          </figure>
+          <figure data-cat="mixers">
+            <div class="plate"><img width="1600" height="1200" src="img/ph-navy-side.webp" alt="The olive-drab off-grid concrete mixer on its trailer in the shop." loading="lazy"></div>
+            <figcaption><span class="tag">Mixers</span>Off-grid Navy mixer after QC. Serial numbers blurred.</figcaption>
+          </figure>
+          <figure data-cat="mixers">
+            <div class="plate"><img width="1600" height="1200" src="img/qc-skid-mixer.webp" alt="A white skid-mounted concrete mixer with a ladder and platform, engine, oil cooler and lifting frame." loading="lazy"></div>
+            <figcaption><span class="tag">Mixers</span>Skid mixer: engine-driven hydraulics, oil cooler, platform.</figcaption>
+          </figure>
+          <figure data-cat="mixers">
+            <div class="plate"><img width="1100" height="1134" src="img/rolloff-frame.webp" alt="The white 4-yard mixer resting on its roll-off frame beside a hook-lift truck." loading="lazy"></div>
+            <figcaption><span class="tag">Mixers</span>4-yard roll-off mixer on its frame.</figcaption>
+          </figure>
+          <figure data-cat="plants">
+            <div class="plate"><img width="1600" height="1200" src="img/qc-loader-2.webp" alt="A grey aggregate hopper on a white frame with an inclined belt conveyor driven by a Honda engine." loading="lazy"></div>
+            <figcaption><span class="tag">Plants and loaders</span>Loading system: aggregate hopper, engine-driven belt.</figcaption>
+          </figure>
+          <figure data-cat="plants">
+            <div class="plate"><img width="1200" height="1600" src="img/qc-loader-1.webp" alt="Two loading systems in the yard, each with a hopper and inclined conveyor." loading="lazy"></div>
+            <figcaption><span class="tag">Plants and loaders</span>Loading systems in the yard before shipping.</figcaption>
+          </figure>
+          <figure data-cat="plants">
+            <div class="plate"><img width="1600" height="1200" src="img/qc-plant-frame.webp" alt="Two white batch-plant bin frames in the shop, with hoppers, gate cylinders and feed belts." loading="lazy"></div>
+            <figcaption><span class="tag">Plants and loaders</span>Bin frames with gate cylinders and feed belts.</figcaption>
+          </figure>
+          <figure data-cat="plants">
+            <div class="plate"><img width="1200" height="1600" src="img/qc-conveyors.webp" alt="Two load conveyors with red covers and black belts on round slewing bases in the shop." loading="lazy"></div>
+            <figcaption><span class="tag">Plants and loaders</span>Load conveyors with covers, on slewing bases.</figcaption>
+          </figure>
+          <figure data-cat="plants">
+            <div class="plate"><img width="1400" height="939" src="img/shop-two-plants.webp" alt="Two UCBL2 plant frames in production in the Salem shop." loading="lazy"></div>
+            <figcaption><span class="tag">Plants and loaders</span>Two UCBL2 plants in production, October 2026.</figcaption>
+          </figure>
+          <figure data-cat="plants silos">
+            <div class="plate"><img width="1600" height="1200" src="img/ship-plant-silo.webp" alt="A batch plant and a white Low-Pro silo strapped to a lowboy trailer." loading="lazy"></div>
+            <figcaption><span class="tag">Silos</span>Plant and Low-Pro silo strapped for shipment.</figcaption>
+          </figure>
+          <figure data-cat="silos">
+            <div class="plate"><img width="1800" height="1350" src="img/silo-finished.webp" alt="The finished mobile silo on its tandem-axle trailer frame." loading="lazy"></div>
+            <figcaption><span class="tag">Silos</span>The finished mobile 200-barrel silo.</figcaption>
+          </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="more" data-spy="More work" data-nav="">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>More work</h2>
+        <p>Other projects in brief. Details on request.</p>
+      </div>
+      <div class="more">
+        <article>
+          <h3>Teardrop campers built for production</h3>
+          <p class="label where">Rovikk, a Cart-Away company, 2025 – present</p>
+          <p>Aluminum and carbon-fiber campers designed for repeatable builds: parametric assemblies, CNC-ready drawings, configurable BOMs and build manuals across six models.</p>
+        </article>
+        <article>
+          <h3>Production line turnaround</h3>
+          <p class="label where">Steel Cave, Oregon, 2023 – 2024</p>
+          <p>Ran a 15-technician line: output up 30%, waste under 2%, zero safety incidents, through process changes, automated lubrication and CMMS maintenance planning.</p>
+        </article>
+        <article>
+          <h3>Spicy Knuckles personal-safety device</h3>
+          <p class="label where">UC Berkeley product development, team of 7, 2025</p>
+          <p>Hand-worn pepper spray with laser aiming. 35 user interviews, 70+ concepts; FEA showed 4 MPa under a 500 N grip and drop stresses below ABS yield.</p>
+        </article>
+        <article>
+          <h3>Pressurized sock-aid for limited-mobility users</h3>
+          <p class="label where">UC Berkeley, Designing for the Human Body, 2024</p>
+          <p>Led six people to design and build an assistive device with five patients: printed brace, heat-pressed TPU cuff. On time, 60% under budget.</p>
+        </article>
+        <article>
+          <h3>1.8 MW ground-mount solar plant</h3>
+          <p class="label where">Distributed Power Africa, internship, 2020</p>
+          <p>Field engineering through installation and commissioning, and drawings for the install team.</p>
+        </article>
+        <article>
+          <h3>Innovation program at Cart-Away</h3>
+          <p class="label where">Cart-Away Concrete Systems, 2025 – present</p>
+          <p>Proposed an R&amp;D program in August 2025; the board approved resources that December, and I lead its engineering and manufacturing workstream. Represented Cart-Away engineering at World of Concrete 2026.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="experience" data-spy="Experience" data-nav="#experience">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Experience</h2>
+      </div>
+      <div class="timeline">
+        <div class="job">
+          <p class="when num">Sep 2026 – present</p>
+          <div>
+            <h3>Production Manager</h3>
+            <p class="org">Cart-Away Concrete Systems and Rovikk (combined shop), Salem, Oregon</p>
+            <ul>
+              <li><b>Assembly planning:</b> sequence builds for batch plants, mixers, silos, trailers and campers from the engineering drawings, BOMs and assembly manuals, setting daily production priorities across both companies.</li>
+              <li><b>Resource allocation:</b> assign six technicians each morning across welding, CNC, finishing, electrical and hydraulic work, balancing customer lead times against shop capacity; resolve design and build issues on the floor.</li>
+              <li><b>Training:</b> run cross-training built around a sellable unit made from parts on hand (no added cash outlay), pairing technicians with experienced builders and tracking each person’s skills by product.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <p class="when num">Jul 2025 – present</p>
+          <div>
+            <h3>Lead Mechanical Engineer</h3>
+            <p class="org">Cart-Away Concrete Systems, Salem, Oregon</p>
+            <ul>
+              <li>Lead SolidWorks design and DFM for batch plants, cement silos, mixers and loading systems, from fabrication through field refinement.</li>
+              <li>Released 25+ drawing packages (weldments, assemblies, BOMs) with assembly manuals and QC procedures; revisions in 3DEXPERIENCE / ENOVIA.</li>
+              <li>QC’d 50+ shipped units, zero warranty claims; cut hopper-plant build-to-invoice time 35%.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <p class="when num">Jul 2025 – present</p>
+          <div>
+            <h3>Product Design Engineer</h3>
+            <p class="org">Rovikk, a Cart-Away company, Oregon</p>
+            <ul>
+              <li>Design aluminum and carbon-fiber teardrop campers for production; build manuals and configurable BOMs across six models.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <p class="when num">Aug 2023 – Jul 2024</p>
+          <div>
+            <h3>Mechanical Engineer</h3>
+            <p class="org">Steel Cave, Oregon</p>
+            <ul>
+              <li>Managed a 15-technician production line; raised output 30% and cut waste below 2%; zero safety incidents.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <p class="when num">2021 – Jul 2023</p>
+          <div>
+            <h3>Lead Mechanical Engineer</h3>
+            <p class="org">FlighTech, Zimbabwe (engineering intern before June 2022)</p>
+            <ul>
+              <li>Led UAV prototype design and manufacturing: CAD, FEA, GD&amp;T documentation, carbon-fiber and CNC-machined parts; cut prototyping cost 18%.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="job">
+          <p class="when num">Jun – Oct 2020</p>
+          <div>
+            <h3>Mechanical Design Intern</h3>
+            <p class="org">Distributed Power Africa</p>
+            <ul>
+              <li>Field engineering support for a 1.8 MW ground-mount solar plant; installation drawings.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills" data-spy="Skills" data-nav="#skills">
+    <div class="wrap">
+      <div class="cols2">
+        <div>
+          <div class="section-head"><h2>Skills</h2></div>
+          <div class="skills">
+            <div class="skill">
+              <h3>Mechanical design and CAD</h3>
+              <p>SolidWorks weldments, sheet metal and large assemblies; production drawings and BOMs; 3DEXPERIENCE / ENOVIA. Also Siemens NX, Onshape.</p>
+              <p class="used">Used on: <a href="#batch-plant">batch plant</a>, <a href="#next-gen">modular plant</a>, <a href="#mobile-silo">mobile silo</a>, <a href="#navy-mixer">Navy mixer</a>, campers, <a href="#uav">UAV</a></p>
+            </div>
+            <div class="skill">
+              <h3>Analysis and validation</h3>
+              <p>Static, drop and fatigue FEA backed by hand calcs; GD&amp;T; test planning and regression against predictions.</p>
+              <p class="used">Used on: <a href="#uav">UAV wing</a>, <a href="#sprayer">crop sprayer</a>, <a href="#more">Spicy Knuckles</a></p>
+            </div>
+            <div class="skill">
+              <h3>Manufacturing</h3>
+              <p>DFM/DFA, steel fabrication and welding, CNC-ready drawings, flat patterns, composites, 3D printing.</p>
+              <p class="used">Used on: every sheet above, and the <a href="#equipment">equipment I QC</a></p>
+            </div>
+            <div class="skill">
+              <h3>Machine systems</h3>
+              <p>Hydraulic drives and valve banks, conveyors and augers, load-cell weighing, trailers, small electronics.</p>
+              <p class="used">Used on: <a href="#navy-mixer">Navy mixer</a>, <a href="#batch-plant">batch plant</a>, <a href="#next-gen">retrofit kit</a>, <a href="#wave-energy">wave energy converter</a></p>
+            </div>
+            <div class="skill">
+              <h3>Quality and operations</h3>
+              <p>QC and factory testing, field commissioning, Six Sigma Green Belt, CMMS maintenance, shop scheduling.</p>
+              <p class="used">Used on: <a href="#equipment">Cart-Away equipment</a>, <a href="#batch-plant">commissioning</a>, Steel Cave</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="section-head"><h2>Education and credentials</h2></div>
+          <div class="creds">
+            <div class="cred">
+              <h3>M.Eng, Mechanical Engineering, UC Berkeley</h3>
+              <p>Product Design concentration, 2025. Murray Slater Foundation Scholar.</p>
+            </div>
+            <div class="cred">
+              <h3>B.S., Mechanical Engineering, Ashesi University</h3>
+              <p>2022. Mastercard Foundation Scholar.</p>
+            </div>
+            <div class="cred">
+              <h3>Six Sigma Green Belt Specialization</h3>
+              <p>Kennesaw State University, 2024</p>
+            </div>
+            <div class="cred">
+              <h3>Siemens NX: Advanced Design and Application</h3>
+              <p>Siemens, 2025</p>
+            </div>
+            <div class="cred">
+              <h3>Publications</h3>
+              <p>“Design and Testing of a Low-Cost Wheel-Driven Crop Sprayer,” IEEE GHTC 2022. “Ram vs. Cycle Pump: Designing a Sustainable Water Pump,” SEED Journal (co-author).</p>
+            </div>
+            <div class="cred">
+              <h3>Leadership</h3>
+              <p>Co-leader, M.Eng Product Design affinity group, UC Berkeley, 2024–25</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<section class="contact" id="contact" data-spy="Contact" data-nav="#contact" aria-labelledby="h-contact">
+  <div class="wrap">
+    <div>
+      <div class="who">
+        <img width="171" height="200" src="img/headshot.webp" alt="Portrait of Cecil Mashongedza in a navy Cal polo shirt.">
+        <p class="label" style="color:inherit;opacity:.8;margin:0">Tatenda Cecil Mashongedza<br>Salem, Oregon</p>
+      </div>
+      <h2 id="h-contact">Get in touch</h2>
+      <p>Happy to walk through any project in depth, including drawings and calculations I can’t publish here.</p>
+    </div>
+    <dl>
+      <div><dt>Email</dt><dd><a href="mailto:t.mashongedza@berkeley.edu">t.mashongedza@berkeley.edu</a></dd></div>
+      <div><dt>Phone</dt><dd><a href="tel:+15103653249">(510) 365-3249</a></dd></div>
+      <div><dt>LinkedIn</dt><dd><a href="https://www.linkedin.com/in/tatenda-mashongedza-3769b5182/">in/tatenda-mashongedza</a></dd></div>
+      <div><dt>Based in</dt><dd>Salem, Oregon</dd></div>
+    </dl>
+  </div>
+</section>
+<footer><div class="wrap">Portfolio revised November 2026.</div></footer>
+<script>
+(function () {
+  'use strict';
+  var $ = function (s, r) { return (r || document).querySelector(s); };
+  var $$ = function (s, r) { return Array.prototype.slice.call((r || document).querySelectorAll(s)); };
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var NS = 'http://www.w3.org/2000/svg';
+
+  /* ---------- progress bar and section indicator ---------- */
+  var bar = $('.progress'), now = $('.now');
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return; ticking = true;
+    requestAnimationFrame(function () {
+      var h = document.documentElement, max = h.scrollHeight - h.clientHeight;
+      if (bar) bar.style.setProperty('--p', max > 0 ? Math.min(1, Math.max(0, h.scrollTop / max)) : 0);
+      ticking = false;
+    });
+  }
+  addEventListener('scroll', onScroll, { passive: true }); onScroll();
+
+  var spies = $$('[data-spy]'), active = new Set(), navLinks = $$('.masthead nav a');
+  if ('IntersectionObserver' in window && spies.length) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { if (e.isIntersecting) active.add(e.target); else active.delete(e.target); });
+      var cur = null;
+      spies.forEach(function (el) { if (active.has(el)) cur = el; });
+      if (!cur) return;
+      if (now) now.textContent = cur.dataset.spy;
+      var nav = cur.dataset.nav || '';
+      navLinks.forEach(function (a) {
+        if (nav && a.getAttribute('href') === nav) a.setAttribute('aria-current', 'true');
+        else a.removeAttribute('aria-current');
+      });
+    }, { rootMargin: '-40% 0px -55% 0px' });
+    spies.forEach(function (el) { io.observe(el); });
+  }
+
+  /* ---------- tooltip ---------- */
+  function makeTip(host) {
+    var t = document.createElement('div'); t.className = 'tip'; t.setAttribute('aria-hidden', 'true'); host.appendChild(t);
+    return {
+      show: function (txt, x, y) { t.textContent = txt; t.style.left = x + 'px'; t.style.top = y + 'px'; t.classList.add('on'); },
+      hide: function () { t.classList.remove('on'); }
+    };
+  }
+
+  /* ---------- batching accuracy chart ---------- */
+  var chartFig = $('#acc-chart');
+  if (chartFig) {
+    var MAT = {
+      cement: { lim: 1, max: 25, step: 5, name: 'cement', limTxt: '±1% cement limit' },
+      sand: { lim: 2, max: 6, step: 1, name: 'sand', limTxt: '±2% aggregate limit' },
+      rock: { lim: 2, max: 6, step: 1, name: 'rock', limTxt: '±2% aggregate limit' },
+      water: { lim: 1, max: 1.2, step: 0.2, name: 'water', limTxt: '±1% water limit' }
+    };
+    var ROWS = [
+      { g: 'Earlier CBL2, timed metering' },
+      { l: 'Dec 2025 calibration, 30 tests', v: { cement: 21.1 } },
+      { l: 'Mar–Apr 2026 calibration, 30 tests', v: { cement: 8.9 } },
+      { l: 'Jul 2026 calibration, 30 tests', v: { cement: 7.0 } },
+      { g: 'UCBL2, weighed' },
+      { l: 'Controls replaced, Jun 3–5, 6 runs', v: { cement: 1.19, sand: 3.28, rock: 3.92, water: 0.35 }, hi: 1 },
+      { l: 'Flow changes, Jun 8 – Jul 6, 46 runs', v: { cement: 1.79, sand: 4.48, rock: 5.23, water: 0.40 }, hi: 1 },
+      { l: 'Full production, Jul 7–31, 35 runs', v: { cement: 0.47, sand: 0.71, rock: 0.70, water: 0.28 }, hi: 1 },
+      { l: 'Aug–Sep 2026, 144 runs', v: { cement: 0.31, sand: 0.55, rock: 0.62, water: 0.28 }, hi: 1 }
+    ];
+    var plate = $('.plate.chart', chartFig), cap = $('figcaption .cap-txt', chartFig), note = $('.chart-note', chartFig);
+    var tip = makeTip(plate);
+    var X0 = 262, X1 = 600, W = 660, narrow = false, curKey = 'cement';
+    var fmt = function (n) { return (Math.round(n * 100) / 100).toString(); };
+    var el = function (tag, attrs, txt) {
+      var e = document.createElementNS(NS, tag);
+      for (var k in attrs) e.setAttribute(k, attrs[k]);
+      if (txt != null) e.textContent = txt;
+      return e;
+    };
+    function render(key) {
+      curKey = key;
+      narrow = plate.clientWidth < 560;
+      if (narrow) { X0 = 8; X1 = 300; W = 360; } else { X0 = 262; X1 = 600; W = 660; }
+      var m = MAT[key], sx = function (v) { return X0 + (X1 - X0) * Math.min(v, m.max) / m.max; };
+      var y = 0, rows = [], step = narrow ? 40 : 28;
+      ROWS.forEach(function (r) { if (r.g) { y += (y ? 14 : 0) + (narrow ? 26 : 22); rows.push({ r: r, y: y }); } else { y += step; rows.push({ r: r, y: y }); } });
+      var H = y + 40;
+      var svg = el('svg', { viewBox: '0 0 ' + W + ' ' + H, role: 'img', 'aria-label': 'Mean ' + m.name + ' error from recipe by plant and period' });
+      var grid = el('g', { 'class': 'grid' }), axis = el('g', { 'class': 'axis', 'text-anchor': 'middle' });
+      for (var t = 0; t <= m.max + 1e-9; t += m.step) {
+        var x = sx(t);
+        grid.appendChild(el('line', { x1: x, x2: x, y1: 8, y2: y + 10 }));
+        axis.appendChild(el('text', { x: x, y: y + 28 }, fmt(t) + '%'));
+      }
+      svg.appendChild(grid); svg.appendChild(axis);
+      var lx = sx(m.lim);
+      svg.appendChild(el('line', { 'class': 'limit', x1: lx, x2: lx, y1: 8, y2: y + 10 }));
+      svg.appendChild(el('text', { 'class': 'limit-l', x: lx + 5, y: 16 }, m.limTxt));
+      var bars = [];
+      rows.forEach(function (o) {
+        var r = o.r, yy = o.y;
+        if (r.g) { svg.appendChild(el('text', narrow ? { 'class': 'grp', x: X0, y: yy - 4 } : { 'class': 'grp', x: 252, y: yy - 4, 'text-anchor': 'end' }, r.g)); return; }
+        svg.appendChild(el('text', narrow ? { 'class': 'xl', x: X0, y: yy - 17 } : { 'class': 'xl', x: 252, y: yy, 'text-anchor': 'end' }, r.l));
+        var v = r.v[key];
+        if (v == null) { svg.appendChild(el('text', { 'class': 'nr', x: X0 + 8, y: yy }, narrow ? 'not recorded' : 'not recorded: this plant doesn’t weigh ' + m.name)); return; }
+        var w = Math.max(2, sx(v) - X0);
+        var b = el('rect', { 'class': 'bar' + (r.hi ? ' hi' : ''), x: X0, y: yy - 13, width: w, height: 16, rx: Math.min(4, w / 2), tabindex: 0, 'aria-label': r.l + ': ' + fmt(v) + '% mean ' + m.name + ' error' });
+        b.dataset.tip = r.l.replace(/, \d+ (runs|tests)$/, '') + ': ' + fmt(v) + '%' + (v <= m.lim ? ', within the limit' : ', over the limit');
+        if (!reduce) b.style.transform = 'scaleX(0)';
+        svg.appendChild(b); bars.push(b);
+        var lbl = fmt(v) + '%', vx = sx(v) + 6;
+        var vt = el('text', { 'class': 'val', x: vx, y: yy }, lbl);
+        svg.appendChild(vt);
+      });
+      svg.appendChild(el('line', { 'class': 'base', x1: X0, x2: X0, y1: 8, y2: y + 10 }));
+      var old = $('svg', plate); if (old) plate.replaceChild(svg, old); else plate.insertBefore(svg, plate.firstChild);
+      if (!reduce) requestAnimationFrame(function () { requestAnimationFrame(function () { bars.forEach(function (b) { b.style.transform = 'scaleX(1)'; }); }); });
+      bars.forEach(function (b) {
+        function show() {
+          var pr = plate.getBoundingClientRect(), br = b.getBoundingClientRect();
+          tip.show(b.dataset.tip, br.left - pr.left + Math.min(br.width, pr.width * 0.6) / 2 + 10, br.top - pr.top);
+        }
+        b.addEventListener('mouseenter', show); b.addEventListener('focus', show);
+        b.addEventListener('mouseleave', tip.hide); b.addEventListener('blur', tip.hide);
+      });
+      if (cap) cap.textContent = 'Mean ' + m.name + ' error from recipe, against the batching limit. Two sites: a comparison of records, not a side-by-side test.';
+      if (note) note.textContent = key === 'cement'
+        ? 'Both plants record cement: 7–21% off before, 0.31% now.'
+        : (key === 'water' ? 'Water was close from the first batch; the earlier plant doesn’t meter it.' : 'See the drop after June 29, when the bin-gate restrictors went in. The earlier plant doesn’t weigh ' + m.name + '.');
+    }
+    var btns = $$('[data-mat]', chartFig);
+    btns.forEach(function (b) {
+      b.addEventListener('click', function () {
+        btns.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        tip.hide(); render(b.dataset.mat);
+      });
+    });
+    render('cement');
+    var rw = plate.clientWidth, rt = null;
+    addEventListener('resize', function () {
+      clearTimeout(rt);
+      rt = setTimeout(function () { var w = plate.clientWidth; if ((w < 560) !== (rw < 560)) { rw = w; reduce = true; render(curKey); reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches; } rw = w; }, 150);
+    });
+  }
+
+  /* ---------- commissioning timeline ---------- */
+  var tl = $('.tl');
+  if (tl) {
+    var items = $$('.tl-list > li', tl), hits = items.map(function (li) { return $('.tl-hit', li); });
+    var stage = $('.tl-stage', tl), media = $('.tl-media', stage), when = $('.when', stage), tag = $('.tl-tag', stage),
+        h4 = $('h4', stage), body = $('.tl-desc', stage), count = $('.tl-count', tl), prev = $('.tl-prev', tl), next = $('.tl-next', tl);
+    var TAGS = { install: 'Installation', fail: 'Rejected trial', fix: 'Field change', prod: 'Production' };
+    var cur = -1, booted = false;
+    stage.hidden = false; $('.tl-nav', tl).hidden = false;
+    function select(i, focus) {
+      i = Math.max(0, Math.min(items.length - 1, i));
+      if (i === cur) return; cur = i;
+      var li = items[i];
+      hits.forEach(function (h, k) { h.setAttribute('aria-selected', k === i ? 'true' : 'false'); h.tabIndex = k === i ? 0 : -1; });
+      if (focus) hits[i].focus({ preventScroll: true });
+      var sc = $('.tl-scroll', tl), l = li.offsetLeft, w = li.offsetWidth;
+      if (l < sc.scrollLeft + 8 || l + w > sc.scrollLeft + sc.clientWidth - 8) {
+        sc.scrollTo({ left: Math.max(0, l - (sc.clientWidth - w) / 2), behavior: (reduce || !booted) ? 'auto' : 'smooth' });
+      }
+      when.textContent = $('.tl-date', li).textContent;
+      tag.innerHTML = ''; var d = document.createElement('span'); d.className = 'dot ' + li.dataset.phase; tag.appendChild(d);
+      tag.appendChild(document.createTextNode(TAGS[li.dataset.phase] || ''));
+      h4.textContent = $('.tl-title', li).textContent;
+      body.textContent = $('.tl-body', li).textContent;
+      media.innerHTML = '';
+      var imgs = $$('.tl-li-imgs img', li);
+      media.classList.toggle('two', imgs.length > 1);
+      imgs.forEach(function (src) {
+        var f = document.createElement('figure'), im = document.createElement('img');
+        im.src = src.getAttribute('src'); im.alt = src.alt; im.decoding = 'async';
+        im.dataset.zoom = '1'; im.dataset.cap = h4.textContent + '. ' + (src.dataset.label ? src.dataset.label + ': ' : '') + src.alt;
+        f.appendChild(im);
+        if (src.dataset.label) { var fc = document.createElement('figcaption'); fc.innerHTML = '<b>' + src.dataset.label + '</b>'; f.appendChild(fc); }
+        media.appendChild(f);
+      });
+      [media, $('.tl-text', stage)].forEach(function (n) { n.classList.remove('fade'); void n.offsetWidth; n.classList.add('fade'); });
+      count.textContent = (i + 1) + ' of ' + items.length;
+      prev.disabled = i === 0; next.disabled = i === items.length - 1;
+      prepZoom(media);
+    }
+    hits.forEach(function (h, i) {
+      h.setAttribute('role', 'tab');
+      h.setAttribute('aria-label', $('.tl-date', h).textContent + ': ' + $('.tl-title', h).textContent);
+      h.title = $('.tl-title', h).textContent;
+      h.addEventListener('click', function () { select(i); });
+      h.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); select(cur + 1, true); }
+        else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); select(cur - 1, true); }
+        else if (e.key === 'Home') { e.preventDefault(); select(0, true); }
+        else if (e.key === 'End') { e.preventDefault(); select(items.length - 1, true); }
+      });
+    });
+    $('.tl-list', tl).setAttribute('role', 'tablist');
+    prev.addEventListener('click', function () { select(cur - 1); });
+    next.addEventListener('click', function () { select(cur + 1); });
+    var start = items.findIndex(function (li) { return li.hasAttribute('data-start'); });
+    select(start >= 0 ? start : 0);
+    booted = true;
+  }
+
+  /* ---------- modular plant configurator ---------- */
+  var cfg = $('.cfg');
+  if (cfg) {
+    var img = $('.cfg-view img', cfg), schem = $('.cfg-schem', cfg), desc = $('.cfg-desc', cfg);
+    var st = { n: 3, view: 'iso' }, lastN = 3;
+    var VIEWS = { iso: 'isometric view', side: 'side view', top: 'top view' };
+    var DESC = {
+      1: 'CBL1: one aggregate bin beside the cement hopper. The starting point.',
+      2: 'CBL2: a second bin module added in line. More capacity, same plant.',
+      3: 'CBL3: a third module, and so on as the operation grows.'
+    };
+    function drawSchem(n) {
+      var w = 390, cx = 112, bx0 = 196, g = 58, bw = 50;
+      var s = '<line class="gnd" x1="6" x2="' + (w - 6) + '" y1="112" y2="112"/>';
+      s += '<line class="belt" x1="' + (cx - 8) + '" x2="14" y1="90" y2="38"/><text x="16" y="26">Load conveyor</text>';
+      s += '<line class="leg" x1="' + (cx + 8) + '" x2="' + (cx + 8) + '" y1="64" y2="112"/><line class="leg" x1="' + (cx + 52) + '" x2="' + (cx + 52) + '" y1="64" y2="112"/>';
+      s += '<path class="cem" d="M' + cx + ' 14 h60 v26 l-22 24 h-16 l-22 -24 z"/><text x="' + (cx + 30) + '" y="9" text-anchor="middle">Cement</text>';
+      var end = bx0 + (n - 1) * g + bw + 4;
+      s += '<line class="belt" x1="' + (cx - 8) + '" x2="' + end + '" y1="90" y2="90"/>';
+      for (var i = 0; i < n; i++) {
+        var x = bx0 + i * g, isNew = i >= lastN && n > lastN;
+        s += '<g' + (isNew ? ' class="bin new" style="animation-delay:' + ((i - lastN) * 90) + 'ms"' : '') + '>' +
+          '<path class="bin" d="M' + x + ' 30 h' + bw + ' l-14 34 h-' + (bw - 28) + ' z"/>' +
+          '<line class="belt" style="stroke-width:1.5" x1="' + (x + 9) + '" x2="' + (x + 9) + '" y1="64" y2="88"/>' +
+          '<line class="belt" style="stroke-width:1.5" x1="' + (x + bw - 9) + '" x2="' + (x + bw - 9) + '" y1="64" y2="88"/>' +
+          '<text x="' + (x + bw / 2) + '" y="24" text-anchor="middle">Bin ' + (i + 1) + '</text></g>';
+      }
+      schem.innerHTML = s;
+      schem.setAttribute('aria-label', 'Schematic: load conveyor, cement hopper and ' + n + ' aggregate bin' + (n > 1 ? 's' : '') + ' in line. Not to scale.');
+    }
+    function update() {
+      var src = 'img/cfg-cbl' + st.n + '-' + st.view + '.webp';
+      if (img.getAttribute('src') !== src) {
+        img.classList.add('loading');
+        var pre = new Image();
+        pre.onload = pre.onerror = function () { img.src = src; img.width = pre.naturalWidth || img.width; img.height = pre.naturalHeight || img.height; img.classList.remove('loading'); };
+        pre.src = src;
+      }
+      img.alt = 'Render of the CBL' + st.n + ' configuration, ' + VIEWS[st.view] + '.';
+      desc.textContent = DESC[st.n];
+      drawSchem(st.n); lastN = st.n;
+      $$('[data-n]', cfg).forEach(function (b) { b.setAttribute('aria-pressed', +b.dataset.n === st.n ? 'true' : 'false'); });
+      $$('[data-view]', cfg).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.view === st.view ? 'true' : 'false'); });
+    }
+    $$('[data-n]', cfg).forEach(function (b) { b.addEventListener('click', function () { st.n = +b.dataset.n; update(); }); });
+    $$('[data-view]', cfg).forEach(function (b) { b.addEventListener('click', function () { st.view = b.dataset.view; update(); }); });
+    update();
+    var warm = function () { [1, 2, 3].forEach(function (n) { ['iso', 'side', 'top'].forEach(function (v) { (new Image()).src = 'img/cfg-cbl' + n + '-' + v + '.webp'; }); }); };
+    if ('requestIdleCallback' in window) requestIdleCallback(warm, { timeout: 4000 }); else setTimeout(warm, 2500);
+  }
+
+  /* ---------- equipment filters ---------- */
+  var gal = $('.gal');
+  if (gal) {
+    var figs = $$('figure', gal), fb = $$('[data-f]');
+    fb.forEach(function (b) {
+      var f = b.dataset.f, n = f === 'all' ? figs.length : figs.filter(function (x) { return x.dataset.cat.split(' ').indexOf(f) >= 0; }).length;
+      var c = document.createElement('span'); c.className = 'n'; c.textContent = n; b.appendChild(c);
+      b.addEventListener('click', function () {
+        fb.forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+        figs.forEach(function (x) { x.hidden = !(f === 'all' || x.dataset.cat.split(' ').indexOf(f) >= 0); });
+      });
+    });
+  }
+
+  /* ---------- flight-test video chapters ---------- */
+  $$('.vid-fig').forEach(function (fig) {
+    var v = $('video', fig), bs = $$('.vchap button', fig);
+    if (!v || !bs.length) return;
+    var T = bs.map(function (b) { return +b.dataset.t; });
+    var userPaused = false, autoPausing = false;
+    function upd() {
+      var t = v.currentTime, d = v.duration || 70, cur = -1;
+      T.forEach(function (s, i) { if (t >= s - 0.05) cur = i; });
+      bs.forEach(function (b, i) {
+        var s = T[i], e = i + 1 < T.length ? T[i + 1] : d;
+        var p = t <= s ? 0 : t >= e ? 100 : (t - s) / (e - s) * 100;
+        b.style.setProperty('--p', p.toFixed(1) + '%');
+        b.setAttribute('aria-current', i === cur ? 'true' : 'false');
+      });
+    }
+    function inSeekable(s) { var r = v.seekable; for (var i = 0; i < r.length; i++) if (s >= r.start(i) && s <= r.end(i)) return true; return false; }
+    var blobbing = false, pending = 0;
+    function seekTo(s) {
+      if (inSeekable(s)) { v.currentTime = s; return; }
+      /* host without byte ranges: load the clip once as a blob, which is always seekable */
+      pending = s;
+      if (blobbing || !window.fetch || !window.URL) return;
+      blobbing = true;
+      fetch(v.currentSrc || v.src).then(function (r) { return r.blob(); }).then(function (bl) {
+        v.addEventListener('loadedmetadata', function () {
+          v.currentTime = pending;
+          var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+        }, { once: true });
+        v.src = URL.createObjectURL(bl);
+      }).catch(function () { try { v.currentTime = s; } catch (e) {} });
+    }
+    bs.forEach(function (b) {
+      b.addEventListener('click', function () {
+        userPaused = false;
+        seekTo(+b.dataset.t);
+        var pr = v.play(); if (pr && pr.catch) pr.catch(function () {});
+        upd();
+      });
+    });
+    v.addEventListener('timeupdate', upd);
+    v.addEventListener('seeked', upd);
+    v.addEventListener('pause', function () { if (autoPausing) { autoPausing = false; return; } if (!v.ended) userPaused = true; });
+    v.addEventListener('play', function () { userPaused = false; });
+    var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce && 'IntersectionObserver' in window) {
+      new IntersectionObserver(function (es) {
+        es.forEach(function (e) {
+          if (e.intersectionRatio >= 0.5) { if (!userPaused && v.paused) { var pr = v.play(); if (pr && pr.catch) pr.catch(function () {}); } }
+          else if (!v.paused) { autoPausing = true; v.pause(); }
+        });
+      }, { threshold: [0, 0.5] }).observe(v);
+    }
+    upd();
+  });
+
+  /* ---------- lightbox ---------- */
+  var lb = document.createElement('div');
+  lb.className = 'lb'; lb.hidden = true; lb.setAttribute('role', 'dialog'); lb.setAttribute('aria-modal', 'true'); lb.setAttribute('aria-label', 'Enlarged image');
+  lb.innerHTML = '<div class="lb-top"><span class="lb-count" aria-live="polite"></span><button type="button" class="lb-close">Close</button></div>' +
+    '<div class="lb-stage"><button type="button" class="lb-prev" aria-label="Previous image">‹</button><img alt=""><button type="button" class="lb-next" aria-label="Next image">›</button></div>' +
+    '<p class="lb-cap"></p>';
+  document.body.appendChild(lb);
+  var lbImg = $('img', lb), lbCap = $('.lb-cap', lb), lbCount = $('.lb-count', lb), lbPrev = $('.lb-prev', lb), lbNext = $('.lb-next', lb), lbClose = $('.lb-close', lb);
+  var group = [], gi = 0, lastFocus = null;
+  function capFor(im) {
+    if (im.dataset.cap) return im.dataset.cap;
+    var f = im.closest('figure'), fc = f && $('figcaption', f);
+    if (!fc) return im.alt;
+    var c = fc.cloneNode(true); $$('.tag', c).forEach(function (x) { x.remove(); });
+    return c.textContent.trim();
+  }
+  function show(i) {
+    gi = (i + group.length) % group.length;
+    var im = group[gi];
+    lbImg.src = im.currentSrc || im.src; lbImg.alt = im.alt; lbCap.textContent = capFor(im);
+    lbCount.textContent = group.length > 1 ? (gi + 1) + ' / ' + group.length : '';
+    lbPrev.hidden = lbNext.hidden = group.length < 2;
+  }
+  function openLb(im) {
+    var scope = im.closest('[data-group]') || im.closest('article') || im.closest('section') || document.body;
+    group = $$('img[data-zoom]', scope).filter(function (x) { return x.offsetParent !== null && !x.closest('[hidden]'); });
+    if (group.indexOf(im) < 0) group = [im];
+    lastFocus = document.activeElement; lb.hidden = false; document.documentElement.style.overflow = 'hidden';
+    show(group.indexOf(im)); lbClose.focus();
+  }
+  function closeLb() { lb.hidden = true; document.documentElement.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  lbClose.addEventListener('click', closeLb);
+  lbPrev.addEventListener('click', function () { show(gi - 1); });
+  lbNext.addEventListener('click', function () { show(gi + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-stage')) closeLb(); });
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') { e.preventDefault(); closeLb(); }
+    else if (e.key === 'ArrowRight') show(gi + 1);
+    else if (e.key === 'ArrowLeft') show(gi - 1);
+    else if (e.key === 'Tab') {
+      var f = [lbClose, lbPrev, lbNext].filter(function (x) { return !x.hidden; });
+      var k = f.indexOf(document.activeElement);
+      e.preventDefault(); f[(k + (e.shiftKey ? -1 : 1) + f.length) % f.length].focus();
+    }
+  });
+  var tx = null;
+  lb.addEventListener('touchstart', function (e) { tx = e.touches[0].clientX; }, { passive: true });
+  lb.addEventListener('touchend', function (e) { if (tx == null) return; var dx = e.changedTouches[0].clientX - tx; if (Math.abs(dx) > 50) show(gi + (dx < 0 ? 1 : -1)); tx = null; });
+
+  function prepZoom(root) {
+    $$('img[data-zoom]', root).forEach(function (im) {
+      if (im.dataset.zoomReady) return; im.dataset.zoomReady = '1';
+      im.tabIndex = 0; im.setAttribute('role', 'button');
+      im.setAttribute('aria-label', 'Enlarge image: ' + im.alt);
+    });
+  }
+  $$('.project figure img, .gal img, .hero-sheet figure img').forEach(function (im) { if (!im.closest('.cfg') && !im.closest('.vchap')) im.dataset.zoom = '1'; });
+  prepZoom(document);
+  document.addEventListener('click', function (e) { var im = e.target.closest && e.target.closest('img[data-zoom]'); if (im && lb.hidden) openLb(im); });
+  document.addEventListener('keydown', function (e) {
+    var im = document.activeElement;
+    if (lb.hidden && im && im.matches && im.matches('img[data-zoom]') && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); openLb(im); }
+  });
+})();
+</script>
+</body>
+</html>
